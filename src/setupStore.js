@@ -1,12 +1,42 @@
 import {configureStore} from '@reduxjs/toolkit'
-import {reducer as racersReducer} from 'racersFeature';
-import {persistStore} from "redux-persist";
+import createSagaMiddleware from 'redux-saga';
+import racersReducer from "./features/racers/reducer";
+import rootSaga from "./rootSaga";
+import {
+    persistStore,
+    persistReducer,
+    FLUSH,
+    REHYDRATE,
+    PAUSE,
+    PERSIST,
+    PURGE,
+    REGISTER,
+} from "redux-persist";
+import {constants as racersConstants} from "./features/racers"
+import AsyncStorage from "@react-native-community/async-storage";
 
 export default function setupStore(initialState = {}) {
+
+    const racersPersistConfig = {
+        key: [racersConstants.NAME],
+        storage: AsyncStorage
+    };
+
+    const sagaMiddleware = createSagaMiddleware();
     const store = configureStore({
-        racersReducer,
-        initialState,
-    });
+            reducer: {racers: persistReducer(racersPersistConfig, racersReducer)},
+            middleware:
+                (getDefaultMiddleware) =>
+                    getDefaultMiddleware({
+                        thunk: false,
+                        serializableCheck: {
+                            ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+                        },
+                    }).concat(sagaMiddleware)
+        },
+    )
+    // sagaMiddleware.run(rootSaga);
+
     const persistor = persistStore(store);
     return {persistor, store};
 };
