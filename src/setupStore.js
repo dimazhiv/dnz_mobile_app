@@ -35,7 +35,7 @@ export default function setupStore(initialState = {}) {
                     }).concat(sagaMiddleware)
         },
     )
-    // sagaMiddleware.run(rootSaga);
+    sagaMiddleware.run(rootSaga);
 
     const persistor = persistStore(store);
     return {persistor, store};
