@@ -1,18 +1,9 @@
 import DriverItem from './DriverItem';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import {getDriver} from "../../selectors";
 
-const driverTestData = {
-    driverId: "abate",
-    url: "http:\/\/en.wikipedia.org\/wiki\/Carlo_Mario_Abate",
-    givenName: "Carlo",
-    familyName: "Abate",
-    dateOfBirth: "1932-07-10",
-    nationality: "Italian"
-};
-
-
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
     const {
         driverId,
         url,
@@ -20,13 +11,12 @@ function mapStateToProps(state) {
         familyName,
         dateOfBirth,
         nationality
-    } = driverTestData;
+    } = getDriver(state, ownProps.driverId) || {};
 
     return {
         driverId,
         url,
-        givenName,
-        familyName,
+        fullName: `${givenName} ${familyName}`,
         dateOfBirth,
         nationality
 
@@ -35,9 +25,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators(
-        {
-            //TODO DZ:Add Action to open driver info in future
-        },
+        {},
         dispatch
     );
 }
