@@ -1,21 +1,12 @@
 import React from 'react';
-import {StyleSheet, Button} from 'react-native';
+import {Button} from 'react-native';
 
 export type RacerButtonProps = {
-    title: string,
-    onPress: () => {},
+    onPress: () => {}
 };
 
-function RacerButton({title, onPress}: RacerButtonProps) {
-    return (<Button title={title} onPress={() => onPress({username: 'asdas'})}/>);
+function RacerButton({onPress}: RacerButtonProps) {
+    return (<Button title={"RACER BUTTON"} onPress={onPress}/>);
 }
-
-const styles = StyleSheet.create({
-    container: {
-        alignItems: 'center',
-        flexDirection: 'row'
-    }
-});
-
 
 export default RacerButton;
