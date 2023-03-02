@@ -10,9 +10,8 @@ import {Provider} from 'react-redux';
 import {SafeAreaView, StatusBar} from 'react-native';
 import setupStore from "./setupStore";
 import RacerButtonContainer from "./features/racers/components/RacerButton/RacerButtonContainer";
-import DriverItem from "./features/racers/components/DriverItem/DriverItemContainer";
-import DriverButtonContainer from "./features/racers/components/DriverButton/DriverButtonContainer";
 import {PersistGate} from "redux-persist/integration/react";
+import DriversList from "./features/racers/components/DriversList/DriversListContainer";
 
 
 const {persistor, store} = setupStore();
@@ -23,11 +22,10 @@ class AppProvider extends Component {
         return (
             <Provider store={store}>
                 <PersistGate persistor={persistor} loading={null}>
-                    <SafeAreaView>
+                    <SafeAreaView style={{flex:1}}>
                         <StatusBar/>
-                        <DriverItem/>
                         <RacerButtonContainer/>
-                        <DriverButtonContainer/>
+                        <DriversList/>
                     </SafeAreaView>
                 </PersistGate>
             </Provider>
