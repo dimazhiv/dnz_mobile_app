@@ -1,6 +1,6 @@
 import {configureStore} from '@reduxjs/toolkit'
 import createSagaMiddleware from 'redux-saga';
-import racersReducer from "./features/racers/reducer";
+import racersSlice from "./features/racers/slice";
 import rootSaga from "./rootSaga";
 import {
     persistStore,
@@ -24,7 +24,7 @@ export default function setupStore(initialState = {}) {
 
     const sagaMiddleware = createSagaMiddleware();
     const store = configureStore({
-            reducer: {racers: persistReducer(racersPersistConfig, racersReducer)},
+            reducer: {racers: persistReducer(racersPersistConfig, racersSlice)},
             middleware:
                 (getDefaultMiddleware) =>
                     getDefaultMiddleware({
