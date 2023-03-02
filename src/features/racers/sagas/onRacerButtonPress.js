@@ -1,13 +1,11 @@
-import { put, takeLatest } from 'redux-saga/effects';
-import {setUser} from "../reducer";
+import {put, takeLatest} from 'redux-saga/effects';
+import {onLoadDriversData, onRacerButtonPress} from "../slice";
 
-export function* _onRacerButtonPress( ) {
-  console.log('----saga racers._onRacerButtonPress saga-----');
-
-  yield put(setUser({username:"FROM SAGA"}));
-
+export function* _onRacerButtonPress({}) {
+    console.log('----saga racers._onRacerButtonPress saga-----');
+    yield put(onLoadDriversData());
 }
 
 export function* watchOnRacerButtonPress() {
-  yield takeLatest('ON_RACER_BUTTON_PRESS', _onRacerButtonPress);
+    yield takeLatest(onRacerButtonPress.type, _onRacerButtonPress);
 }
