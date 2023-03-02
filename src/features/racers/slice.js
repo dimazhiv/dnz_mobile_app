@@ -1,33 +1,33 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
-    user: {
-        username: "",
-        email: "",
-        password: "",
-    },
+    byId: {},
+    driversIds: [],
 };
 
 const slice = createSlice({
     name: 'racers',
     initialState,
     reducers: {
-        setUser(state, {payload}) {
-            state.user = {...state.user, ...payload};
+        setDriversData(state, action) {
+            const {byId, driversIds} = action.payload;
+            state.driversIds = driversIds;
+            state.byId = byId;
         },
-
-        onDriverNamePress(state, name) {
-            state.user = {...state.user, ...name};
+        onDriverNamePress() {
         },
-
-        onRacerButtonPress(state, action) {
-
+        onRacerButtonPress() {
         },
-        onFetchDriversData(state, action) {
-
+        onLoadDriversData() {
         }
     },
 });
 
-export const {setUser, onDriverNamePress, onFetchDriversData, onRacerButtonPress} = slice.actions;
+export const {
+    setUser,
+    onDriverNamePress,
+    onLoadDriversData,
+    setDriversData,
+    onRacerButtonPress
+} = slice.actions;
 export default slice.reducer;
