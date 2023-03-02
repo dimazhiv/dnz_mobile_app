@@ -1,8 +1,9 @@
 import {createSlice} from '@reduxjs/toolkit';
+import {RacersState} from "../../types/Racers";
 
-const initialState = {
-    byId: {},
+const initialState: RacersState = {
     driversIds: [],
+    byId: {}
 };
 
 const slice = createSlice({
@@ -24,10 +25,9 @@ const slice = createSlice({
 });
 
 export const {
-    setUser,
-    onDriverNamePress,
-    onLoadDriversData,
     setDriversData,
-    onRacerButtonPress
+    onDriverNamePress,
+    onRacerButtonPress,
+    onLoadDriversData
 } = slice.actions;
 export default slice.reducer;
