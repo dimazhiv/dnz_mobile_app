@@ -18,12 +18,9 @@ const slice = createSlice({
       const { byId, driversIds } = action.payload;
       state.driversIds = driversIds;
       state.byId = byId;
-    },
-    onDriverNamePress(state) {},
-    onRacerButtonPress(state) {},
-    onLoadDriversData(state) {}
+    }
   }
 });
 
-export const { setDriversData, onDriverNamePress, onRacerButtonPress, onLoadDriversData } = slice.actions;
+export const { setDriversData } = slice.actions;
 export default slice.reducer;

@@ -1,5 +1,6 @@
 import { put, takeLatest } from 'redux-saga/effects';
-import { onLoadDriversData, onRacerButtonPress } from '../slice';
+import { onLoadDriversData } from '../slice';
+import { onRacerButtonPress } from '../sagaActions';
 
 export function* _onRacerButtonPress({}) {
   console.log('----saga racers._onRacerButtonPress saga-----');

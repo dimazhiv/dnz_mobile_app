@@ -13,8 +13,8 @@ export type DriverItemProps = {
 };
 
 function DriverItem({ driverId, url, fullName, dateOfBirth, nationality, onPress, onLinkPress }: DriverItemProps) {
-  const handlePress = (driverId) => onPress(driverId);
-  const handleLinkPress = (url) => onLinkPress(url);
+  const handlePress = () => onPress(driverId);
+  const handleLinkPress = () => onLinkPress(url);
 
   return (
     <View style={styles.container}>

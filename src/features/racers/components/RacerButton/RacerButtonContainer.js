@@ -1,7 +1,7 @@
 import RacerButton from './RacerButton';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { onRacerButtonPress } from '../../slice';
+import { onRacerButtonPress } from '../../sagaActions';
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
