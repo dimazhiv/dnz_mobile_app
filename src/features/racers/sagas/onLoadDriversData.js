@@ -1,9 +1,8 @@
 import {call, put, takeLatest} from 'redux-saga/effects';
 import {onLoadDriversData, setDriversData} from "../slice" ;
-import {loadDriversData} from "../../services/api";
+import {loadDriversData} from "../services";
 
 export function* _onLoadDriversData() {
-
     console.log('----saga racers._onLoadDriversData saga-----');
     const limit = 10;
     const offset = 60;

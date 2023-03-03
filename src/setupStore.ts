@@ -40,3 +40,7 @@ export default function setupStore(initialState = {}) {
     const persistor = persistStore(store);
     return {persistor, store};
 };
+
+export type RootState = ReturnType<typeof racersSlice>;
+export type AppStore = ReturnType<typeof setupStore>;
+export type AppDispatch = AppStore['persistor'];
