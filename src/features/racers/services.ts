@@ -12,10 +12,6 @@ export async function fetchDriversData(limit: number, offset: number): Promise<D
     }
 }
 
-type ResultType = {
-    [key: string]: any
-};
-
 export async function loadDriversData(limit: number, offset: number): Promise<LoadedDriversData> {
     try {
         const drivers = await fetchDriversData(limit, offset);
