@@ -18,7 +18,7 @@ import AsyncStorage from "@react-native-community/async-storage";
 export default function setupStore(initialState = {}) {
 
     const racersPersistConfig = {
-        key: [racersConstants.NAME],
+        key: racersConstants.NAME,
         storage: AsyncStorage
     };
 
