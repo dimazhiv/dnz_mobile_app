@@ -1,4 +1,4 @@
 export interface RacersState {
-    driversIds: [],
-    byId: {}
+  driversIds: [];
+  byId: {};
 }

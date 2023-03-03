@@ -1,3 +1,3 @@
 import DriverItem from './DriverItem/DriverItemContainer';
 
-export {DriverItem};
+export { DriverItem };
