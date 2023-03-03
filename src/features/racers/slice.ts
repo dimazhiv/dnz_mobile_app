@@ -15,11 +15,11 @@ const slice = createSlice({
             state.driversIds = driversIds;
             state.byId = byId;
         },
-        onDriverNamePress() {
+        onDriverNamePress(state) {
         },
-        onRacerButtonPress() {
+        onRacerButtonPress(state) {
         },
-        onLoadDriversData() {
+        onLoadDriversData(state) {
         }
     },
 });
