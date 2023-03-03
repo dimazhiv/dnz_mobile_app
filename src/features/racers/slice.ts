@@ -1,5 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { RacersState } from '../../types/Racers';
+
+interface RacersState {
+  driversIds: [];
+  byId: {};
+}
 
 const initialState: RacersState = {
   driversIds: [],

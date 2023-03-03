@@ -1,6 +1,6 @@
-import { LoadedDriversData } from '../../types/LoadedDriversData';
-import axios from 'axios';
+import { LoadedDrivers } from '../../types/LoadedDrivers';
 import { DriverData } from '../../types/DriverData';
+import axios from 'axios';
 
 async function fetchDriversData(limit: number, offset: number): Promise<DriverData[]> {
   try {
@@ -11,11 +11,11 @@ async function fetchDriversData(limit: number, offset: number): Promise<DriverDa
   }
 }
 
-export async function loadDriversData(limit: number, offset: number): Promise<LoadedDriversData> {
+export async function loadDriversData(limit: number, offset: number): Promise<LoadedDrivers> {
   try {
     const drivers = await fetchDriversData(limit, offset);
     const driversIds = drivers ? drivers.map((item: DriverData) => item.driverId) : [];
-    const byId = drivers.reduce((acc: { [key: string]: any }, item) => {
+    const byId = drivers.reduce((acc: { [key: string]: DriverData }, item) => {
       acc[item.driverId] = item;
       return acc;
     }, {});

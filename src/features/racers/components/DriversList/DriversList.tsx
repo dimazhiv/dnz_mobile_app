@@ -6,7 +6,7 @@ export type DriversListProps = {
   driversIds: [];
 };
 
-const renderItem = ({ item }) => <DriverItem driverId={item} />;
+const renderItem = ({ item }: { item: string }) => <DriverItem driverId={item} />;
 
 const renderSeparator = () => <View style={styles.separator} />;
 

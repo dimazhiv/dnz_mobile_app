@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 import racersSlice from './features/racers/slice';
 import rootSaga from './rootSaga';
@@ -6,15 +6,20 @@ import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, 
 import { constants as racersConstants } from './features/racers';
 import AsyncStorage from '@react-native-community/async-storage';
 
-export default function setupStore(initialState = {}) {
-  const racersPersistConfig = {
-    key: racersConstants.NAME,
-    storage: AsyncStorage
-  };
+const racersPersistConfig = {
+  key: racersConstants.NAME,
+  storage: AsyncStorage
+};
 
+const rootReducer = combineReducers({
+  racers: persistReducer(racersPersistConfig, racersSlice)
+});
+
+export default function setupStore(initialState = {}) {
   const sagaMiddleware = createSagaMiddleware();
   const store = configureStore({
-    reducer: { racers: persistReducer(racersPersistConfig, racersSlice) },
+    devTools: true,
+    reducer: rootReducer,
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         thunk: false,
@@ -29,6 +34,6 @@ export default function setupStore(initialState = {}) {
   return { persistor, store };
 }
 
-export type RootState = ReturnType<typeof racersSlice>;
+export type RootState = ReturnType<typeof rootReducer>;
 export type AppStore = ReturnType<typeof setupStore>;
 export type AppDispatch = AppStore['persistor'];
