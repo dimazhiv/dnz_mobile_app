@@ -7,24 +7,29 @@
 
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import { SafeAreaView, StatusBar } from 'react-native';
 import setupStore from './setupStore';
-import RacerButtonContainer from './features/racers/components/RacerButton/RacerButtonContainer';
 import { PersistGate } from 'redux-persist/integration/react';
-import DriversList from './features/racers/components/DriversList/DriversListContainer';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import DriversTable from './screens/DriversTable';
+import DriverInfo from "./screens/DriverInfo";
 
 const { persistor, store } = setupStore();
+
+const Stack = createNativeStackNavigator();
+
 
 class AppProvider extends Component {
   render() {
     return (
       <Provider store={store}>
         <PersistGate persistor={persistor} loading={null}>
-          <SafeAreaView style={{ flex: 1 }}>
-            <StatusBar />
-            <RacerButtonContainer />
-            <DriversList />
-          </SafeAreaView>
+          <NavigationContainer>
+            <Stack.Navigator initialRouteName="DriversTable">
+              <Stack.Screen name="DriversTable" component={DriversTable} />
+              <Stack.Screen name="DriverInfo" component={DriverInfo} />
+            </Stack.Navigator>
+          </NavigationContainer>
         </PersistGate>
       </Provider>
     );

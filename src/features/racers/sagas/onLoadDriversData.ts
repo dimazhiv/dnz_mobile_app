@@ -2,7 +2,7 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import { setDriversData } from '../slice';
 import { loadDriversData } from '../services';
 import { LoadedDrivers } from '../../../types/LoadedDrivers';
-import { onRacerButtonPress } from '../sagaActions';
+import { onLoadDriversData } from '../sagaActions';
 
 export function* _onLoadDriversData() {
   console.log('----saga racers._onLoadDriversData saga-----');
@@ -17,5 +17,5 @@ export function* _onLoadDriversData() {
 }
 
 export function* watchOnLoadDriversData() {
-  yield takeLatest(onRacerButtonPress.type, _onLoadDriversData);
+  yield takeLatest(onLoadDriversData.type, _onLoadDriversData);
 }
