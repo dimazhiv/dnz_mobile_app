@@ -25,9 +25,13 @@ class AppProvider extends Component {
       <Provider store={store}>
         <PersistGate persistor={persistor} loading={null}>
           <NavigationContainer ref={navigationRef}>
-            <Navigator initialRouteName={DRIVERS_TABLE_SCREEN}>
-              <Screen name={DRIVERS_TABLE_SCREEN} component={DriversTable} options={{title:"Drivers"}} />
-              <Screen name={DRIVER_INFO_SCREEN} component={DriverInfo} options={{title:"Driver Info"}}/>
+            <Navigator
+              initialRouteName={DRIVERS_TABLE_SCREEN}
+              screenOptions={{
+                headerBackTitleVisible: false
+              }}>
+              <Screen name={DRIVERS_TABLE_SCREEN} component={DriversTable} />
+              <Screen name={DRIVER_INFO_SCREEN} component={DriverInfo} />
             </Navigator>
           </NavigationContainer>
         </PersistGate>
