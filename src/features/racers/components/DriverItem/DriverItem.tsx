@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import {useNavigation} from "@react-navigation/native";
-import DriverInfo from "../../../../screens/DriverInfo";
+import { useOpenLink } from '../../../../hooks/hooks';
 
 export type DriverItemProps = {
   driverId: string;
@@ -11,30 +10,17 @@ export type DriverItemProps = {
   nationality: string;
   //TODO DZ correct types
   onPress: any;
-  onLinkPress: any;
 };
 
-function DriverItem({
-  driverId,
-  url,
-  fullName,
-  dateOfBirth,
-  nationality,
-  onPress,
-  onLinkPress,
-}: DriverItemProps) {
-  const {navigate} = useNavigation()
-  const handlePress = () => {
-    navigate('DriverInfo');
-
-  }
-  const handleLinkPress = () => onLinkPress(url);
+function DriverItem({ driverId, url, fullName, dateOfBirth, nationality, onPress }: DriverItemProps) {
+  const handlePress = () => onPress(driverId);
+  const handleLinkPress = useOpenLink(url);
 
   return (
     <View style={styles.container}>
       <View style={styles.nameCell}>
         <TouchableOpacity onPress={handlePress}>
-          <Text style={styles.linkStyle}>{fullName}</Text>
+          <Text style={styles.name}>{fullName}</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.dateCell}>
@@ -47,8 +33,8 @@ function DriverItem({
       </View>
       <View style={styles.racesCell}>
         <TouchableOpacity onPress={handleLinkPress}>
-          <Text style={styles.linkStyle} numberOfLines={1}>
-            races
+          <Text style={styles.linkStyle} numberOfLines={2}>
+            info
           </Text>
         </TouchableOpacity>
       </View>
@@ -78,8 +64,13 @@ const styles = StyleSheet.create({
     padding: 10,
     minWidth: 60
   },
+  name: {
+    color: 'blue',
+    fontWeight: 'bold'
+  },
   linkStyle: {
-    color: 'blue'
+    color: 'blue',
+    textDecorationLine: 'underline'
   }
 });
 
