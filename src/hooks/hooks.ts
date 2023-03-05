@@ -1,6 +1,8 @@
-import { TypedUseSelectorHook, useSelector } from 'react-redux';
-import { RootState } from '../setupStore';
+import { useCallback } from 'react';
+import { Alert, Linking } from 'react-native';
 
-//TODO DZ fix issue with type for persist state
-// export const useAppDispatch = () => useDispatch<AppDispatch>();
-export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+export const useOpenLink = (url: string) =>
+  useCallback(async () => {
+    const supported = await Linking.canOpenURL(url);
+    supported ? await Linking.openURL(url) : Alert.alert(`Don't know how to open this URL: ${url}`);
+  }, [url]);
