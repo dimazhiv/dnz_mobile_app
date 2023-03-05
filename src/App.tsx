@@ -12,12 +12,11 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import DriversTable from './screens/DriversTable';
-import DriverInfo from "./screens/DriverInfo";
+import DriverInfo from './screens/DriverInfo';
 
 const { persistor, store } = setupStore();
 
-const Stack = createNativeStackNavigator();
-
+const { Navigator, Screen } = createNativeStackNavigator();
 
 class AppProvider extends Component {
   render() {
@@ -25,10 +24,10 @@ class AppProvider extends Component {
       <Provider store={store}>
         <PersistGate persistor={persistor} loading={null}>
           <NavigationContainer>
-            <Stack.Navigator initialRouteName="DriversTable">
-              <Stack.Screen name="DriversTable" component={DriversTable} />
-              <Stack.Screen name="DriverInfo" component={DriverInfo} />
-            </Stack.Navigator>
+            <Navigator initialRouteName="DriversTable">
+              <Screen name="DriversTable" component={DriversTable} />
+              <Screen name="DriverInfo" component={DriverInfo} />
+            </Navigator>
           </NavigationContainer>
         </PersistGate>
       </Provider>

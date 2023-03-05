@@ -6,7 +6,7 @@ export type RacerButtonProps = {
 };
 
 function RacerButton({ onPress }: RacerButtonProps) {
-  return <Button title={'RACER BUTTON'} onPress={onPress} />;
+  return <Button title={'Download drivers'} onPress={onPress} />;
 }
 
 export default RacerButton;

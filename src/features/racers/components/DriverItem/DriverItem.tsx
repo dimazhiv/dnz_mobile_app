@@ -1,5 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {useNavigation} from "@react-navigation/native";
+import DriverInfo from "../../../../screens/DriverInfo";
 
 export type DriverItemProps = {
   driverId: string;
@@ -12,8 +14,20 @@ export type DriverItemProps = {
   onLinkPress: any;
 };
 
-function DriverItem({ driverId, url, fullName, dateOfBirth, nationality, onPress, onLinkPress }: DriverItemProps) {
-  const handlePress = () => onPress(driverId);
+function DriverItem({
+  driverId,
+  url,
+  fullName,
+  dateOfBirth,
+  nationality,
+  onPress,
+  onLinkPress,
+}: DriverItemProps) {
+  const {navigate} = useNavigation()
+  const handlePress = () => {
+    navigate('DriverInfo');
+
+  }
   const handleLinkPress = () => onLinkPress(url);
 
   return (

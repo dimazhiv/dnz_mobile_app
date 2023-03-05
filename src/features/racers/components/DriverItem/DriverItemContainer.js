@@ -2,6 +2,7 @@ import DriverItem from './DriverItem';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getDriver } from '../../selectors';
+import { onDriverNamePress } from '../../sagaActions';
 
 function mapStateToProps(state, ownProps) {
   const { driverId, url, givenName, familyName, dateOfBirth, nationality } = getDriver(state, ownProps.driverId) || {};
@@ -16,7 +17,12 @@ function mapStateToProps(state, ownProps) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({}, dispatch);
+  return bindActionCreators(
+    {
+      onPress: onDriverNamePress
+    },
+    dispatch
+  );
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DriverItem);
