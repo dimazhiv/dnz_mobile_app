@@ -4,6 +4,7 @@ import { ById, DriversIds } from '../../types/LoadedDrivers';
 import { DriverData } from '../../types/DriverData';
 
 export const getDrivers = (state: RootState): ById<DriverData> => state[NAME].byId;
+export const getActiveDriverInfo = (state: RootState): DriverData => state[NAME].activeDriverInfo;
 
 export const getDriversIds = (state: RootState): DriversIds => {
   return state[NAME].driversIds;

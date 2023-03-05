@@ -1,8 +1,12 @@
-import { takeLatest } from 'redux-saga/effects';
-import { onDriverNamePress } from '../sagaActions';
+import { call, put, takeLatest } from 'redux-saga/effects';
+import { onDriverNamePress, onLoadDriverInfo } from '../sagaActions';
+import { navigateTo } from '../../../App';
+import { DRIVER_INFO_SCREEN } from '../../../rootConstants';
 
-export function* _onDriverNamePress() {
-  console.log('----saga racers._onDriverNamePress saga-----');
+export function* _onDriverNamePress({ payload }) {
+  console.log('----saga racers._onDriverNamePress saga-----', payload);
+  yield call(navigateTo, DRIVER_INFO_SCREEN);
+  yield put(onLoadDriverInfo(payload));
 }
 
 export function* watchOnDriverNamePress() {
