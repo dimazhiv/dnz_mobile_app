@@ -1,18 +1,23 @@
 import React from 'react';
-import { Button, SafeAreaView, StatusBar, View } from 'react-native';
+import {SafeAreaView, StatusBar, StyleSheet} from 'react-native';
 import RacerButtonContainer from '../features/racers/components/RacerButton/RacerButtonContainer';
 import DriversList from '../features/racers/components/DriversList/DriversListContainer';
 
 function DriversTable() {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <SafeAreaView style={{ flex: 1 }}>
-        <StatusBar />
+    <SafeAreaView style={styles.container}>
+      <StatusBar />
+      <DriversList />
         <RacerButtonContainer />
-        <DriversList />
-      </SafeAreaView>
-    </View>
+    </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center' }
+});
 
 export default DriversTable;

@@ -1,14 +1,20 @@
 import React from 'react';
-import { SafeAreaView, View, Text } from 'react-native';
+import { SafeAreaView, StyleSheet } from 'react-native';
+import DriverInfoComponent from '../features/racers/components/DriverInfo/DriverInfoContainer';
 
 function DriverInfo() {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <SafeAreaView style={{ justifyContent:'center',flex: 1 }}>
-        <Text>DriverInfo screen placeholder</Text>
-      </SafeAreaView>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <DriverInfoComponent />
+    </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    justifyContent: 'center',
+    flex: 1
+  }
+});
 
 export default DriverInfo;
