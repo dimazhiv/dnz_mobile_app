@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, StyleSheet, FlatList } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 import DriverItem from '../DriverItem/DriverItemContainer';
+import { DriversIds } from '../../../../types/LoadedDrivers';
 
 export type DriversListProps = {
-  driversIds: [];
+  driversIds: DriversIds;
 };
 
 const renderItem = ({ item }: { item: string }) => <DriverItem driverId={item} />;
@@ -12,24 +13,18 @@ const renderSeparator = () => <View style={styles.separator} />;
 
 function DriversList({ driversIds }: DriversListProps) {
   return (
-    <View style={styles.container}>
-      <FlatList
-        ItemSeparatorComponent={renderSeparator}
-        contentContainerStyle={styles.flatList}
-        data={driversIds}
-        renderItem={renderItem}
-      />
-    </View>
+    <FlatList
+      style={styles.flatList}
+      ItemSeparatorComponent={renderSeparator}
+      data={driversIds}
+      renderItem={renderItem}
+      showsVerticalScrollIndicator={false}
+    />
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 20
-  },
   flatList: {
-    flex: 1,
     paddingTop: 10,
     paddingBottom: 20
   },

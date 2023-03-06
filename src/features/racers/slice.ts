@@ -1,10 +1,11 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { RootState } from '../../setupStore';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { ById, DriversIds } from '../../types/LoadedDrivers';
+import { DriverData } from '../../types/DriverData';
 
 interface RacersState {
-  driversIds: [];
-  byId: {};
-  activeDriverInfo: {};
+  driversIds: DriversIds;
+  byId: ById<DriverData>;
+  activeDriverInfo: DriverData | {};
   currentPageNumber: number;
   maxOffset: number;
 }
@@ -21,18 +22,18 @@ const slice = createSlice({
   name: 'racers',
   initialState,
   reducers: {
-    setDriversData: (state: RootState, action) => {
+    setDriversData: (state, action: PayloadAction<{ byId: ById<DriverData>; driversIds: DriversIds }>) => {
       const { byId, driversIds } = action.payload;
       state.driversIds.push(...driversIds);
       Object.assign(state.byId, { ...byId });
     },
-    setActiveDriverInfo: (state: RootState, action) => {
+    setActiveDriverInfo: (state, action: PayloadAction<DriverData>) => {
       state.activeDriverInfo = action.payload;
     },
-    setCurrentPage: (state: RootState, action) => {
+    setCurrentPage: (state, action) => {
       state.currentPageNumber = action.payload;
     },
-    setMaxOffset: (state: RootState, action) => {
+    setMaxOffset: (state, action) => {
       state.maxOffset = action.payload;
     }
   }

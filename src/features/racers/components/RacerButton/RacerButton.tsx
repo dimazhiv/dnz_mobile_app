@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from 'react-native';
 
 export type RacerButtonProps = {
-  onPress: () => {};
+  onPress: () => void;
 };
 
 function RacerButton({ onPress }: RacerButtonProps) {

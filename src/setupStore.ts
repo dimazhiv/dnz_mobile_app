@@ -2,7 +2,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 import racersSlice from './features/racers/slice';
 import rootSaga from './rootSaga';
-import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
+import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE } from 'redux-persist';
 import { constants as racersConstants } from './features/racers';
 import AsyncStorage from '@react-native-community/async-storage';
 
@@ -12,6 +12,7 @@ const racersPersistConfig = {
 };
 
 const rootReducer = combineReducers({
+  // racers: racersSlice
   racers: persistReducer(racersPersistConfig, racersSlice)
 });
 
@@ -36,4 +37,4 @@ export default function setupStore(initialState = {}) {
 
 export type RootState = ReturnType<typeof rootReducer>;
 export type AppStore = ReturnType<typeof setupStore>;
-export type AppDispatch = AppStore['persistor'];
+// export type AppDispatch = AppStore['persistor'];

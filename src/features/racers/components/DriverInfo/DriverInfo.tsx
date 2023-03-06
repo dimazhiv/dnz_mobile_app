@@ -3,7 +3,6 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useOpenLink } from '../../../../hooks/hooks';
 
 export type DriverInfoProps = {
-  driverId: string;
   url: string;
   fullName: string;
   dateOfBirth: string;

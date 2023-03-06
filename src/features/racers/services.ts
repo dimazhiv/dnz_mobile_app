@@ -1,7 +1,6 @@
 import { LoadedDrivers } from '../../types/LoadedDrivers';
 import { DriverData } from '../../types/DriverData';
 import axios from 'axios';
-import { LoadedDriverInfo } from '../../types/LoadedDriverInfo';
 
 async function fetchDriversData(limit: number, offset: number): Promise<DriverData[]> {
   try {
@@ -35,10 +34,9 @@ export async function loadDriversData(limit: number, offset: number): Promise<Lo
   }
 }
 
-export async function loadDriverInfoData(driverId: string): Promise<LoadedDriverInfo> {
+export async function loadDriverInfoData(driverId: string): Promise<DriverData> {
   try {
-    const driverInfo = await fetchDriverInfoData(driverId);
-    return { driverInfo };
+    return await fetchDriverInfoData(driverId);
   } catch (error) {
     throw error;
   }

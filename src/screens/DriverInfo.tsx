@@ -2,11 +2,7 @@ import React from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
 import DriverInfoComponent from '../features/racers/components/DriverInfo/DriverInfoContainer';
 
-function DriverInfo({ navigation }) {
-  navigation.setOptions({
-    title: 'Driver info'
-  });
-
+function DriverInfo() {
   return (
     <SafeAreaView style={styles.container}>
       <DriverInfoComponent />
