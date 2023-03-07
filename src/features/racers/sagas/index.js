@@ -1,17 +1,15 @@
 import { all, call } from 'redux-saga/effects';
 
-import { watchOnRacerButtonPress } from './onRacerButtonPress';
 import { watchOnDriverNamePress } from './onDriverNamePress';
-import { watchOnLoadDriversData } from './onLoadDriversData';
 import { watchOnLoadDriverInfo } from './onLoadDriverInfo';
 import { watchOnNextPagePress } from './onNextPagePress';
 import { watchOnPrevPagePress } from './onPrevPagePress';
 import { watchOnSelectDriversDataForCurrentPage } from './onSelectDriversDataForCurrentPage';
+import { watchInitDataRequest } from './initDataRequest';
 
 export default function* racersSaga() {
   yield all([
-    call(watchOnRacerButtonPress),
-    call(watchOnLoadDriversData),
+    call(watchInitDataRequest),
     call(watchOnDriverNamePress),
     call(watchOnLoadDriverInfo),
     call(watchOnNextPagePress),

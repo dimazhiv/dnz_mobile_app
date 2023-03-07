@@ -12,8 +12,8 @@ const racersPersistConfig = {
 };
 
 const rootReducer = combineReducers({
-  // racers: racersSlice
-  racers: persistReducer(racersPersistConfig, racersSlice)
+  racers: racersSlice
+  // racers: persistReducer(racersPersistConfig, racersSlice)
 });
 
 export default function setupStore(initialState = {}) {
@@ -31,8 +31,8 @@ export default function setupStore(initialState = {}) {
   });
   sagaMiddleware.run(rootSaga);
 
-  const persistor = persistStore(store);
-  return { persistor, store };
+  // const persistor = persistStore(store);
+  return { store };
 }
 
 export type RootState = ReturnType<typeof rootReducer>;

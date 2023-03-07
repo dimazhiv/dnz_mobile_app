@@ -2,11 +2,11 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import { setDriversData, setMaxOffset } from '../slice';
 import { loadDriversData } from '../services';
 import { LoadedDrivers } from '../../../types/LoadedDrivers';
-import { onLoadDriversData } from '../sagaActions';
+import { initDataRequest } from '../sagaActions';
 import { DRIVERS_NUMBER_LIMIT } from '../../../rootConstants';
 
-export function* _onLoadDriversData() {
-  console.log('----saga racers._onLoadDriversData saga-----');
+export function* _initDataRequest() {
+  console.log('----saga racers._initDataRequest saga-----');
   try {
     const driversData = (yield call(loadDriversData, DRIVERS_NUMBER_LIMIT, 0)) as LoadedDrivers;
     yield put(setDriversData(driversData));
@@ -16,6 +16,6 @@ export function* _onLoadDriversData() {
   }
 }
 
-export function* watchOnLoadDriversData() {
-  yield takeLatest(onLoadDriversData.type, _onLoadDriversData);
+export function* watchInitDataRequest() {
+  yield takeLatest(initDataRequest.type, _initDataRequest);
 }

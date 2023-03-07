@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { Provider } from 'react-redux';
+import React, { useEffect } from 'react';
+import { Provider, useDispatch } from 'react-redux';
 import setupStore from './setupStore';
 import { createNavigationContainerRef, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import DriversTable from './screens/DriversTable/DriversTableContainer';
 import DriverInfo from './screens/DriverInfo';
 import { DRIVER_INFO_SCREEN, DRIVERS_TABLE_SCREEN } from './rootConstants';
-import { PersistGate } from 'redux-persist/integration/react';
+import { initDataRequest } from './features/racers/sagaActions';
 
-const { persistor, store } = setupStore();
+const { store } = setupStore();
 
 type Screens = {
   'Drivers Table': {};
@@ -23,26 +23,36 @@ export function navigateTo(name: keyof Screens, params: any) {
   }
 }
 
-class AppProvider extends Component {
-  render() {
+function AppNavigation() {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(initDataRequest());
+    },[]);
+
     return (
-      <Provider store={store}>
-        <PersistGate persistor={persistor} loading={null}>
-          <NavigationContainer ref={navigationRef}>
-            <Navigator
-              initialRouteName={DRIVERS_TABLE_SCREEN}
-              screenOptions={{
-                headerBackTitleVisible: false,
-                gestureEnabled: false
-              }}>
-              <Screen name={DRIVERS_TABLE_SCREEN} component={DriversTable} />
-              <Screen name={DRIVER_INFO_SCREEN} component={DriverInfo} />
-            </Navigator>
-          </NavigationContainer>
-        </PersistGate>
-      </Provider>
-    );
-  }
+    <NavigationContainer ref={navigationRef}>
+      <Navigator
+        initialRouteName={DRIVERS_TABLE_SCREEN}
+        screenOptions={{
+          headerBackTitleVisible: false,
+          gestureEnabled: false
+        }}>
+        <Screen name={DRIVERS_TABLE_SCREEN} component={DriversTable} />
+        <Screen name={DRIVER_INFO_SCREEN} component={DriverInfo} />
+      </Navigator>
+    </NavigationContainer>
+  );
+}
+
+function AppProvider() {
+  return (
+    <Provider store={store}>
+      {/*<PersistGate persistor={persistor} loading={null}>*/}
+      <AppNavigation />
+      {/*</PersistGate>*/}
+    </Provider>
+  );
 }
 
 export default AppProvider;
