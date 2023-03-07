@@ -1,2 +1,2 @@
-export type driverId = string;
-export type pageNumber = number;
+export type DriverId = string;
+export type PageNumber = number;

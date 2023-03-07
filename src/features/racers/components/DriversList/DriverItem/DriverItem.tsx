@@ -1,20 +1,18 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { useOpenLink } from '../../../../hooks/hooks';
 
 export type DriverItemProps = {
   driverId: string;
-  url: string;
   fullName: string;
   dateOfBirth: string;
   nationality: string;
-  //TODO DZ correct types
-  onPress: any;
+  onPress: (id: string) => void;
+  onRacesPress: (id: string) => void;
 };
 
-function DriverItem({ driverId, url, fullName, dateOfBirth, nationality, onPress }: DriverItemProps) {
+function DriverItem({ driverId, fullName, dateOfBirth, nationality, onPress, onRacesPress }: DriverItemProps) {
   const handlePress = () => onPress(driverId);
-  const handleLinkPress = useOpenLink(url);
+  const handleRacesPress = () => onRacesPress(driverId);
 
   return (
     <View style={styles.container}>
@@ -32,9 +30,9 @@ function DriverItem({ driverId, url, fullName, dateOfBirth, nationality, onPress
         </Text>
       </View>
       <View style={styles.racesCell}>
-        <TouchableOpacity onPress={handleLinkPress}>
+        <TouchableOpacity onPress={handleRacesPress}>
           <Text style={styles.linkStyle} numberOfLines={2}>
-            info
+            races
           </Text>
         </TouchableOpacity>
       </View>

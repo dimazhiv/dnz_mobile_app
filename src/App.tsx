@@ -5,14 +5,16 @@ import { createNavigationContainerRef, NavigationContainer } from '@react-naviga
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import DriversTable from './screens/DriversTable/DriversTableContainer';
 import DriverInfo from './screens/DriverInfo';
-import { DRIVER_INFO_SCREEN, DRIVERS_TABLE_SCREEN } from './rootConstants';
+import { DRIVER_INFO_SCREEN, DRIVERS_TABLE_SCREEN, RACES_SCREEN } from './rootConstants';
 import { initDataRequest } from './features/racers/sagaActions';
+import RacesTable from './screens/RacesTable/RacesTable';
 
 const { store } = setupStore();
 
 type Screens = {
   'Drivers Table': {};
   'Driver Info': {};
+  'Races Table': {};
 };
 const { Navigator, Screen } = createNativeStackNavigator();
 export const navigationRef = createNavigationContainerRef<Screens>();
@@ -24,13 +26,13 @@ export function navigateTo(name: keyof Screens, params: any) {
 }
 
 function AppNavigation() {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(initDataRequest());
-    },[]);
+  useEffect(() => {
+    dispatch(initDataRequest());
+  }, []);
 
-    return (
+  return (
     <NavigationContainer ref={navigationRef}>
       <Navigator
         initialRouteName={DRIVERS_TABLE_SCREEN}
@@ -40,6 +42,7 @@ function AppNavigation() {
         }}>
         <Screen name={DRIVERS_TABLE_SCREEN} component={DriversTable} />
         <Screen name={DRIVER_INFO_SCREEN} component={DriverInfo} />
+        <Screen name={RACES_SCREEN} component={RacesTable} />
       </Navigator>
     </NavigationContainer>
   );
