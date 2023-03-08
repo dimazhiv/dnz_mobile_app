@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { Provider, useDispatch } from 'react-redux';
 import setupStore from './setupStore';
-import { createNavigationContainerRef, NavigationContainer } from '@react-navigation/native';
+import { createNavigationContainerRef, NavigationContainer, Route, RouteProp } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import DriversTable from './screens/DriversTable/DriversTableContainer';
 import DriverInfo from './screens/DriverInfo';
 import { DRIVER_INFO_SCREEN, DRIVERS_TABLE_SCREEN, RACES_SCREEN } from './rootConstants';
 import { initDataRequest } from './features/racers/sagaActions';
-import RacesTable from './screens/RacesTable/RacesTable';
+import RacesTable from './screens/RacesTable/RacesTableContainer';
 
 const { store } = setupStore();
 
@@ -42,7 +42,11 @@ function AppNavigation() {
         }}>
         <Screen name={DRIVERS_TABLE_SCREEN} component={DriversTable} />
         <Screen name={DRIVER_INFO_SCREEN} component={DriverInfo} />
-        <Screen name={RACES_SCREEN} component={RacesTable} />
+        <Screen
+          name={RACES_SCREEN}
+          component={RacesTable}
+          options={({ route }) => ({ title: route.params?.title })}
+        />
       </Navigator>
     </NavigationContainer>
   );

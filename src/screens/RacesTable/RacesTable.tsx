@@ -1,13 +1,30 @@
-import React from 'react';
-import { SafeAreaView, StatusBar, StyleSheet, Text } from 'react-native';
+import React, { useEffect } from 'react';
+import { Button, SafeAreaView, StatusBar, StyleSheet } from 'react-native';
+import RacesList from '../../features/racers/components/RacesList/RacesList/RacesListContainer';
+import { useDispatch } from 'react-redux';
+import { ActionCreatorWithoutPayload } from '@reduxjs/toolkit';
 
-type RacesTableProps = {};
+type RacesTableProps = {
+  navigation: any;
+  onClearRacesData: ActionCreatorWithoutPayload;
+};
 
-function RacesTable({}: RacesTableProps) {
+function RacesTable({ navigation, onClearRacesData }: RacesTableProps) {
+  useEffect(() => {
+    navigation.setOptions({
+      headerLeft: () => <Button onPress={handleOnPrevPagePress} title={'<'} />
+    });
+  }, []);
+  const dispatch = useDispatch();
+  const handleOnPrevPagePress = () => {
+    dispatch(onClearRacesData());
+    navigation.goBack();
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar />
-      <Text>Races table placeholder</Text>
+      <RacesList />
     </SafeAreaView>
   );
 }

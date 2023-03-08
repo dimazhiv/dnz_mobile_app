@@ -1,11 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ById, DriversIds } from '../../types/LoadedDrivers';
 import { DriverData } from '../../types/DriverData';
+import {RaceData} from "../../types/RaceData";
 
-interface RacersState {
+export interface RacersState {
   driversIds: DriversIds;
   byId: ById<DriverData>;
   activeDriverInfo: DriverData | {};
+  races: RaceData[];
   currentPageNumber: number;
   maxOffset: number;
 }
@@ -14,6 +16,7 @@ const initialState: RacersState = {
   driversIds: [],
   byId: {},
   activeDriverInfo: {},
+  races: [],
   currentPageNumber: 1,
   maxOffset: 0
 };
@@ -35,9 +38,15 @@ const slice = createSlice({
     },
     setMaxOffset: (state, action) => {
       state.maxOffset = action.payload;
+    },
+    setRacesData: (state, action) => {
+      state.races = action.payload;
+    },
+    setInitialRacesData: (state, action) => {
+      state.races = [];
     }
   }
 });
 
-export const { setDriversData, setActiveDriverInfo, setCurrentPage, setMaxOffset } = slice.actions;
+export const { setDriversData, setActiveDriverInfo, setCurrentPage, setMaxOffset, setRacesData,setInitialRacesData } = slice.actions;
 export default slice.reducer;
