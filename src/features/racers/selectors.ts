@@ -6,6 +6,7 @@ import { DRIVERS_NUMBER_LIMIT, FIRST_START_PAGE } from '../../rootConstants';
 import { RaceData } from '../../types/RaceData';
 import { DriverId } from '../../types/Types';
 
+export const showRacesLoading = (state: RootState): boolean => state[NAME].showRacesLoading;
 export const getRaces = (state: RootState): RaceData[] => state[NAME].races;
 export const getDriversIds = (state: RootState): DriversIds => state[NAME].driversIds;
 export const getDrivers = (state: RootState): ById<DriverData> => state[NAME].byId;
