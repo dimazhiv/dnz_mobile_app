@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Snapshot testing DriverInfo component with guided modality and not accessible 1`] = `
+exports[`Snapshot testing DriverInfo component correct component view 1`] = `
 <View
   style={
     {
