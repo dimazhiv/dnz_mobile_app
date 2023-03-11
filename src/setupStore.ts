@@ -1,11 +1,13 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 import racersSlice from './features/racers/slice';
+import gallerySlice from './features/gallery/slice';
 import rootSaga from './rootSaga';
 import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE } from 'redux-persist';
 import { constants as racersConstants } from './features/racers';
 import AsyncStorage from '@react-native-community/async-storage';
 import { onNextPagePress, onPrevPagePress } from './features/racers/sagaActions';
+import { onLoadPhotosList } from './features/gallery/sagaActions';
 
 const racersPersistConfig = {
   key: racersConstants.NAME,
@@ -13,7 +15,8 @@ const racersPersistConfig = {
 };
 
 const rootReducer = combineReducers({
-  racers: racersSlice
+  racers: racersSlice,
+  gallery: gallerySlice
   // racers: persistReducer(racersPersistConfig, racersSlice)
 });
 
@@ -34,7 +37,8 @@ export default function setupStore(initialState = {}) {
             PURGE,
             REGISTER,
             onPrevPagePress.type,
-            onNextPagePress.type
+            onNextPagePress.type,
+            onLoadPhotosList.type
           ]
         }
       }).concat(sagaMiddleware)
