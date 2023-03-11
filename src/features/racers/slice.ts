@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ById, DriversIds } from '../../types/LoadedDrivers';
+import { ById, DriversIds } from '../../types/NormalizedLoadedDrivers';
 import { DriverData } from '../../types/DriverData';
 import { RaceData } from '../../types/RaceData';
 

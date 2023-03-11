@@ -1,6 +1,6 @@
 import { NAME } from './constants';
 import { RootState } from '../../setupStore';
-import { ById, DriversIds } from '../../types/LoadedDrivers';
+import { ById, DriversIds } from '../../types/NormalizedLoadedDrivers';
 import { DriverData } from '../../types/DriverData';
 import { DRIVERS_NUMBER_LIMIT, FIRST_START_PAGE } from '../../rootConstants';
 import { RaceData } from '../../types/RaceData';

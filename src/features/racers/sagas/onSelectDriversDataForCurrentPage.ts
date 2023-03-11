@@ -1,7 +1,7 @@
 import { call, put, select, takeEvery } from 'redux-saga/effects';
 import { setDriversData, setMaxOffset } from '../slice';
 import { loadDriversData } from '../services';
-import { LoadedDrivers } from '../../../types/LoadedDrivers';
+import { NormalizedLoadedDrivers } from '../../../types/NormalizedLoadedDrivers';
 import { onSelectDriversDataForCurrentPage } from '../sagaActions';
 import { getMaxOffset } from '../selectors';
 import { DRIVERS_NUMBER_LIMIT } from '../../../rootConstants';
@@ -14,7 +14,7 @@ export function* _onSelectDriversDataForCurrentPage({ payload }: PayloadAction<n
   const maxOffset: number = yield select(getMaxOffset);
   if (currentOffset > maxOffset) {
     yield put(setMaxOffset(currentOffset));
-    const driversData = (yield call(loadDriversData, limit, currentOffset)) as LoadedDrivers;
+    const driversData = (yield call(loadDriversData, limit, currentOffset)) as NormalizedLoadedDrivers;
     yield put(setDriversData(driversData));
   }
 }

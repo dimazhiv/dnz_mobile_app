@@ -1,4 +1,4 @@
-import { LoadedDrivers } from '../../types/LoadedDrivers';
+import { NormalizedLoadedDrivers } from '../../types/NormalizedLoadedDrivers';
 import { DriverData } from '../../types/DriverData';
 import axios from 'axios';
 import { RaceData } from '../../types/RaceData';
@@ -33,7 +33,7 @@ async function fetchDriverInfoData(driverId: string): Promise<DriverData> {
   }
 }
 
-export async function loadDriversData(limit: number, offset: number): Promise<LoadedDrivers> {
+export async function loadDriversData(limit: number, offset: number): Promise<NormalizedLoadedDrivers> {
   try {
     const drivers = await fetchDriversData(limit, offset);
     const driversIds = drivers ? drivers.map((item: DriverData) => item.driverId) : [];

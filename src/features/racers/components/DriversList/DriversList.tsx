@@ -1,7 +1,7 @@
 import React from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import DriverItem from './DriverItem/DriverItemContainer';
-import { DriversIds } from '../../../../types/LoadedDrivers';
+import { DriversIds } from '../../../../types/NormalizedLoadedDrivers';
 
 export type DriversListProps = {
   driversIds: DriversIds;

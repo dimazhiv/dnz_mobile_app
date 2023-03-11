@@ -1,6 +1,6 @@
 import { DriverData } from './DriverData';
 
-export interface LoadedDrivers {
+export interface NormalizedLoadedDrivers {
   byId: ById<DriverData>;
   driversIds: DriversIds;
 }
