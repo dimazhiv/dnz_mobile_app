@@ -11,6 +11,7 @@ export interface RacersState {
   currentPageNumber: number;
   maxOffset: number;
   showRacesLoading: boolean;
+  racesDataLoadFailed: boolean;
 }
 
 const initialState: RacersState = {
@@ -20,7 +21,8 @@ const initialState: RacersState = {
   races: [],
   currentPageNumber: 1,
   maxOffset: 0,
-  showRacesLoading: false
+  showRacesLoading: false,
+  racesDataLoadFailed: false
 };
 
 const slice = createSlice({
@@ -49,6 +51,9 @@ const slice = createSlice({
     },
     setShowRacesLoading: (state, action) => {
       state.showRacesLoading = action.payload;
+    },
+    setRacesDataLoadFailed: (state, action) => {
+      state.racesDataLoadFailed = action.payload;
     }
   }
 });
@@ -60,6 +65,7 @@ export const {
   setMaxOffset,
   setRacesData,
   setInitialRacesData,
-  setShowRacesLoading
+  setShowRacesLoading,
+  setRacesDataLoadFailed
 } = slice.actions;
 export default slice.reducer;

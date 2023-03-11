@@ -1,7 +1,8 @@
 import { LoadedDrivers } from '../../types/LoadedDrivers';
 import { DriverData } from '../../types/DriverData';
 import axios from 'axios';
-import {RaceData} from "../../types/RaceData";
+import { RaceData } from '../../types/RaceData';
+import { RACES_NUMBER_MAX } from '../../rootConstants';
 
 async function fetchDriversData(limit: number, offset: number): Promise<DriverData[]> {
   try {
@@ -14,7 +15,9 @@ async function fetchDriversData(limit: number, offset: number): Promise<DriverDa
 
 async function fetchRacesData(driverId: string): Promise<[any]> {
   try {
-    const response = await axios.get(`https://ergast.com/api/f1/drivers/${driverId}/results.json?limit=${500}`);
+    const response = await axios.get(
+      `https://ergast.com/api/f1/drivers/${driverId}/results.json?limit=${RACES_NUMBER_MAX}`
+    );
     return response.data.MRData.RaceTable.Races;
   } catch (error) {
     throw error;

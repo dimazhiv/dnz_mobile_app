@@ -7,6 +7,7 @@ import { RaceData } from '../../types/RaceData';
 import { DriverId } from '../../types/Types';
 
 export const showRacesLoading = (state: RootState): boolean => state[NAME].showRacesLoading;
+export const isRacesDataLoadFailed = (state: RootState): boolean => state[NAME].racesDataLoadFailed;
 export const getRaces = (state: RootState): RaceData[] => state[NAME].races;
 export const getDriversIds = (state: RootState): DriversIds => state[NAME].driversIds;
 export const getDrivers = (state: RootState): ById<DriverData> => state[NAME].byId;

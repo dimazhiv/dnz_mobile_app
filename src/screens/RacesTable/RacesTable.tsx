@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Button, SafeAreaView, StatusBar, StyleSheet } from 'react-native';
-import RacesList from '../../features/racers/components/RacesList/RacesList/RacesListContainer';
+import RacesList from '../../features/racers/components/RacesList/RacesListContainer';
 import { useDispatch } from 'react-redux';
 import { ActionCreatorWithoutPayload } from '@reduxjs/toolkit';
 

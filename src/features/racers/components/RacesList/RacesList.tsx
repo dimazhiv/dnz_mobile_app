@@ -1,23 +1,27 @@
 import React from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
-import RaceItem from '../RaceItem';
-import { RaceData } from '../../../../../types/RaceData';
+import RaceItem from './RaceItem';
+import { RaceData } from '../../../../types/RaceData';
+import { LOADING_INDICATOR_TEXT, RACES_LOADING_FAILED_MESSAGE } from '../../../../rootConstants';
 
 export type RacesListProps = {
   races: RaceData[];
   showRacesLoading: boolean;
+  racesDataLoadFailed: boolean;
 };
 
 const renderItem = ({ item }: { item: RaceData }) => <RaceItem race={item} />;
 
-const renderSeparator = () => <View style={styles.separator} />;
+const renderSeparator = () => <View style={separator} />;
 
-function RacesList({ races, showRacesLoading }: RacesListProps) {
+function RacesList({ races, showRacesLoading, racesDataLoadFailed }: RacesListProps) {
   return showRacesLoading ? (
-    <Text>Races are loading...</Text>
+    <Text>{LOADING_INDICATOR_TEXT}</Text>
+  ) : racesDataLoadFailed ? (
+    <Text>{RACES_LOADING_FAILED_MESSAGE}</Text>
   ) : (
     <FlatList
-      style={styles.flatList}
+      style={flatList}
       ItemSeparatorComponent={renderSeparator}
       data={races}
       renderItem={renderItem}
@@ -26,7 +30,7 @@ function RacesList({ races, showRacesLoading }: RacesListProps) {
   );
 }
 
-const styles = StyleSheet.create({
+const { flatList, separator } = StyleSheet.create({
   flatList: {
     paddingTop: 10,
     paddingBottom: 20
