@@ -59,16 +59,16 @@
       "<rootDir>/setupTests.js"
     ],
     "transformIgnorePatterns": [],
-    "collectCoverage": false,
     "collectCoverageFrom": [
-      "src/features/**/*.js",
-      "src/hooks/**/*.js",
-      "src/screens/**/*.js",
-      "!src/**/index.js",
-      "!src/features/**/sagaActions.js",
-      "!src/features/**/constants.js",
-      "!src/**/*Container.js",
-      "!src/screens/**/*Container.js"
+      "src/features/**/*.ts",
+      "src/features/**/*.tsx",
+      "src/hooks/**/*.ts",
+      "src/screens/**/*.tsx",
+      "!src/**/index.ts",
+      "!src/features/**/sagaActions.ts",
+      "!src/features/**/constants.ts",
+      "!src/**/*Container.ts",
+      "!src/screens/**/*Container.ts"
     ],
     "testPathIgnorePatterns": [
       "/node_modules/"
