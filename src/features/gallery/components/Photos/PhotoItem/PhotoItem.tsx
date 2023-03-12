@@ -3,7 +3,7 @@ import { Image, StyleSheet, TouchableOpacity } from 'react-native';
 
 export type PhotoItemProps = {
   uri: string;
-  onPress: any;
+  onPress: (id: string) => void;
 };
 
 function PhotoItem({ uri, onPress }: PhotoItemProps) {
