@@ -88,6 +88,9 @@ def reactNativeArchitectures() {
     return value ? value.split(",") : ["armeabi-v7a", "x86", "x86_64", "arm64-v8a"]
 }
 
+def calculatedVersionCode = project.hasProperty("versionCode") ? project.getProperty("versionCode").toInteger() : 1
+def calculatedVersionName =  project.hasProperty("versionName") ? project.getProperty("versionName") : "1.0.0"
+
 android {
     ndkVersion rootProject.ext.ndkVersion
 
@@ -95,14 +98,14 @@ android {
 
     namespace "com.dnz_mobile_app"
 
-    project.archivesBaseName = "dnz-app-v"+project.getProperty("versionName")+'-b'+project.getProperty("versionCode")
+    project.archivesBaseName = "dnz-app-v" + calculatedVersionName + '-b'+ calculatedVersionCode
 
     defaultConfig {
         applicationId "com.dnz_mobile_app"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode project.getProperty("versionCode").toInteger()
-        versionName  project.getProperty("versionName")
+        versionCode calculatedVersionCode
+        versionName calculatedVersionName
     }
 
     splits {
