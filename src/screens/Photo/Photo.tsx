@@ -1,11 +1,11 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
-import Photos from '../../features/gallery/components/Photos/PhotosContainer';
+import PhotoComponent from '../../features/gallery/components/Photo/PhotoContainer';
 
-function Gallery() {
+function Photo() {
   return (
     <SafeAreaView style={styles.container}>
-      <Photos />
+      <PhotoComponent />
     </SafeAreaView>
   );
 }
@@ -15,10 +15,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center'
-  },
-  tinyLogo: {
-    width: 300,
-    height: 300
   }
 });
-export default Gallery;
+export default Photo;

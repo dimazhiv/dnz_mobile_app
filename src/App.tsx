@@ -5,10 +5,11 @@ import { createNavigationContainerRef, NavigationContainer } from '@react-naviga
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import DriversTable from './screens/DriversTable/DriversTableContainer';
 import DriverInfo from './screens/DriverInfo';
-import { DRIVER_INFO_SCREEN, DRIVERS_TABLE_SCREEN, GALLERY_SCREEN, RACES_SCREEN } from './rootConstants';
-import { initDataRequest } from './features/racers/sagaActions';
+import { DRIVER_INFO_SCREEN, DRIVERS_TABLE_SCREEN, GALLERY_SCREEN, PHOTO_SCREEN, RACES_SCREEN } from './rootConstants';
 import RacesTable from './screens/RacesTable/RacesTableContainer';
-import Gallery from './screens/Gallery/GalleryContainer';
+import Gallery from './screens/Gallery/Gallery';
+import Photo from './screens/Photo/Photo';
+import { onLoadPhotosList } from './features/gallery/sagaActions';
 
 const { store } = setupStore();
 
@@ -17,6 +18,7 @@ type Screens = {
   'Driver Info': {};
   'Races Table': {};
   Gallery: {};
+  Photo: {};
 };
 const { Navigator, Screen } = createNativeStackNavigator();
 export const navigationRef = createNavigationContainerRef<Screens>();
@@ -31,7 +33,7 @@ function AppNavigation() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(initDataRequest());
+    dispatch(onLoadPhotosList());
   }, []);
 
   return (
@@ -43,6 +45,7 @@ function AppNavigation() {
           gestureEnabled: false
         }}>
         <Screen name={GALLERY_SCREEN} component={Gallery} />
+        <Screen name={PHOTO_SCREEN} component={Photo} />
         <Screen name={DRIVERS_TABLE_SCREEN} component={DriversTable} />
         <Screen name={DRIVER_INFO_SCREEN} component={DriverInfo} />
         <Screen

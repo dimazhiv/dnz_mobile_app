@@ -5,11 +5,13 @@ import { PhotoData } from '../../types/PhotoData';
 export interface GalleryState {
   photosIds: PhotosIds;
   byId: ById<PhotoData>;
+  currentPhotoUri: string;
 }
 
 const initialState: GalleryState = {
   photosIds: [],
-  byId: {}
+  byId: {},
+  currentPhotoUri: ''
 };
 
 const slice = createSlice({
@@ -18,11 +20,14 @@ const slice = createSlice({
   reducers: {
     setPhotos: (state, action: PayloadAction<{ byId: ById<PhotoData>; photosIds: PhotosIds }>) => {
       const { byId, photosIds } = action.payload;
-      state.photosIds.push(...photosIds);
-      Object.assign(state.byId, { ...byId });
+      state.photosIds = photosIds;
+      state.byId = byId;
+    },
+    setCurrentPhotoUri: (state, action: PayloadAction<string>) => {
+      state.currentPhotoUri = action.payload;
     }
   }
 });
 
-export const { setPhotos } = slice.actions;
+export const { setPhotos, setCurrentPhotoUri } = slice.actions;
 export default slice.reducer;
