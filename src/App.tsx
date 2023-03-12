@@ -1,15 +1,16 @@
 import React, { useEffect } from 'react';
 import { Provider, useDispatch } from 'react-redux';
 import setupStore from './setupStore';
-import { createNavigationContainerRef, NavigationContainer, Route, RouteProp } from '@react-navigation/native';
+import { createNavigationContainerRef, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import DriversTable from './screens/DriversTable/DriversTableContainer';
 import DriverInfo from './screens/DriverInfo';
 import { DRIVER_INFO_SCREEN, DRIVERS_TABLE_SCREEN, RACES_SCREEN } from './rootConstants';
 import { initDataRequest } from './features/racers/sagaActions';
 import RacesTable from './screens/RacesTable/RacesTableContainer';
+import {PersistGate} from "redux-persist/integration/react";
 
-const { store } = setupStore();
+const { persistor, store } = setupStore();
 
 type Screens = {
   'Drivers Table': {};
@@ -56,9 +57,9 @@ function AppNavigation() {
 function AppProvider() {
   return (
     <Provider store={store}>
-      {/*<PersistGate persistor={persistor} loading={null}>*/}
-      <AppNavigation />
-      {/*</PersistGate>*/}
+      <PersistGate persistor={persistor} loading={null}>
+        <AppNavigation />
+      </PersistGate>
     </Provider>
   );
 }
