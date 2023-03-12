@@ -94,12 +94,15 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     namespace "com.dnz_mobile_app"
+
+    project.archivesBaseName = "dnz-app-v"+project.getProperty("versionName")+'-b'+project.getProperty("versionCode")
+
     defaultConfig {
         applicationId "com.dnz_mobile_app"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode project.getProperty("versionCode").toInteger()
+        versionName  project.getProperty("versionName")
     }
 
     splits {

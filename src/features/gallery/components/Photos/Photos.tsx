@@ -1,6 +1,6 @@
 import React from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
-import PhotoItem from './PhotoItem/PhotoItemContainer';
+import PhotoItem from "./PhotoItem/PhotoItemContainer";
 
 export type PhotosProps = {
   uris: string[];
