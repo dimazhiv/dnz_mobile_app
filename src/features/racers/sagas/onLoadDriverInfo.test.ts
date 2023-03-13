@@ -38,7 +38,7 @@ describe('racersFeature.onLoadDriverInfo saga', () => {
   });
 });
 
-describe('racersFeature.onLoadDriverInfo saga', () => {
+describe('racersFeature.onLoadDriverInfo watcher', () => {
   it('should fire on onLoadDriverInfo action', () => {
     const generator = watchOnLoadDriverInfo();
     expect(generator.next().value).toEqual(takeLatest(onLoadDriverInfo.type, _onLoadDriverInfo));

@@ -21,7 +21,7 @@ describe('racersFeature.onPrevPagePress saga', () => {
   });
 });
 
-describe('racersFeature.onPrevPagePress saga', () => {
+describe('racersFeature.onPrevPagePress watcher', () => {
   it('should fire on onPrevPagePress action', () => {
     const generator = watchOnPrevPagePress();
     expect(generator.next().value).toEqual(takeEvery(onPrevPagePress.type, _onPrevPagePress));

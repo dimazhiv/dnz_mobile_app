@@ -65,7 +65,7 @@ describe('racersFeature.onRacesPress saga', () => {
   });
 });
 
-describe('racersFeature.onRacesPress saga', () => {
+describe('racersFeature.onRacesPress watcher', () => {
   it('should fire on onRacesPress action', () => {
     const generator = watchOnRacesPress();
     expect(generator.next().value).toEqual(takeLatest(onRacesPress.type, _onRacesPress));

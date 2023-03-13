@@ -5,6 +5,7 @@ import { _initDataRequest, watchInitDataRequest } from './initDataRequest';
 import { loadDriversData } from '../services';
 import { DRIVERS_NUMBER_LIMIT } from '../../../rootConstants';
 import { setDriversData, setMaxOffset } from '../slice';
+import { getDriversIds } from '../selectors';
 
 describe('racersFeature.initDataRequest saga', () => {
   it('should do properly actions for init data request', () => {
@@ -31,6 +32,8 @@ describe('racersFeature.initDataRequest saga', () => {
     };
     testSaga(_initDataRequest)
       .next()
+      .select(getDriversIds)
+      .next([])
       .call(loadDriversData, DRIVERS_NUMBER_LIMIT, 0)
       .next(driversData)
       .put(setDriversData(driversData))
@@ -41,7 +44,7 @@ describe('racersFeature.initDataRequest saga', () => {
   });
 });
 
-describe('racersFeature.initDataRequest saga', () => {
+describe('racersFeature.initDataRequest watcher', () => {
   it('should fire on initDataRequest action', () => {
     const generator = watchInitDataRequest();
     expect(generator.next().value).toEqual(takeLatest(initDataRequest.type, _initDataRequest));

@@ -42,14 +42,9 @@ describe('racersFeature.onSelectDriversDataForCurrentPage saga', () => {
       .isDone();
   });
 
-
   it('should do nothing for select drivers data for current page when drivers are already in state', () => {
     const maxOffset = 16;
-    testSaga(_onSelectDriversDataForCurrentPage, action)
-        .next()
-        .select(getMaxOffset)
-        .next(maxOffset)
-        .isDone();
+    testSaga(_onSelectDriversDataForCurrentPage, action).next().select(getMaxOffset).next(maxOffset).isDone();
   });
 
   it('should do properly actions for select drivers data for current page when no drivers in state and process failed', () => {
@@ -69,7 +64,7 @@ describe('racersFeature.onSelectDriversDataForCurrentPage saga', () => {
   });
 });
 
-describe('racersFeature.onSelectDriversDataForCurrentPage saga', () => {
+describe('racersFeature.onSelectDriversDataForCurrentPage watcher', () => {
   it('should fire on onSelectDriversDataForCurrentPage action', () => {
     const generator = watchOnSelectDriversDataForCurrentPage();
     expect(generator.next().value).toEqual(

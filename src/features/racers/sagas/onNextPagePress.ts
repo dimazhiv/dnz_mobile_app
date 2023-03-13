@@ -1,4 +1,4 @@
-import {put, select, takeEvery, takeLatest} from 'redux-saga/effects';
+import { put, select, takeEvery, takeLatest } from 'redux-saga/effects';
 import { setCurrentPage } from '../slice';
 import { onNextPagePress, onSelectDriversDataForCurrentPage } from '../sagaActions';
 import { getCurrentPage } from '../selectors';

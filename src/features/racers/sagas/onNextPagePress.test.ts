@@ -21,7 +21,7 @@ describe('racersFeature.onNextPagePress saga', () => {
   });
 });
 
-describe('racersFeature.onNextPagePress saga', () => {
+describe('racersFeature.onNextPagePress watcher', () => {
   it('should fire on onNextPagePress action', () => {
     const generator = watchOnNextPagePress();
     expect(generator.next().value).toEqual(takeEvery(onNextPagePress.type, _onNextPagePress));
