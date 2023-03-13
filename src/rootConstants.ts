@@ -1,6 +1,8 @@
 export const DRIVERS_TABLE_SCREEN = 'Drivers Table';
 export const DRIVER_INFO_SCREEN = 'Driver Info';
 export const RACES_SCREEN = 'Races Table';
+export const GALLERY_SCREEN = 'Gallery';
+export const PHOTO_SCREEN = 'Photo';
 
 export const DRIVERS_NUMBER_LIMIT = 8;
 export const RACES_NUMBER_MAX = 500;
