@@ -2,6 +2,7 @@ import React from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import DriverItem from './DriverItem/DriverItemContainer';
 import { DriversIds } from '../../../../types/NormalizedLoadedDrivers';
+import TableHeader from '../TableHeader/TableHeader';
 
 export type DriversListProps = {
   driversIds: DriversIds;
@@ -13,13 +14,16 @@ const renderSeparator = () => <View style={styles.separator} />;
 
 function DriversList({ driversIds }: DriversListProps) {
   return (
-    <FlatList
-      style={styles.flatList}
-      ItemSeparatorComponent={renderSeparator}
-      data={driversIds}
-      renderItem={renderItem}
-      showsVerticalScrollIndicator={false}
-    />
+    <>
+      <TableHeader firstColumn={'Name'} secondColumn={'Birthday'} thirdColumn={'Nationality'} fourthColumn={'Races'} />
+      <FlatList
+        style={styles.flatList}
+        ItemSeparatorComponent={renderSeparator}
+        data={driversIds}
+        renderItem={renderItem}
+        showsVerticalScrollIndicator={false}
+      />
+    </>
   );
 }
 

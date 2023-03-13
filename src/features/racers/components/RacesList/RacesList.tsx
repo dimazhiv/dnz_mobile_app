@@ -3,6 +3,7 @@ import { FlatList, StyleSheet, Text, View } from 'react-native';
 import RaceItem from './RaceItem';
 import { RaceData } from '../../../../types/RaceData';
 import { LOADING_INDICATOR_TEXT, RACES_LOADING_FAILED_MESSAGE } from '../../../../rootConstants';
+import TableHeader from '../TableHeader/TableHeader';
 
 export type RacesListProps = {
   races: RaceData[];
@@ -20,13 +21,21 @@ function RacesList({ races, showRacesLoading, racesDataLoadFailed }: RacesListPr
   ) : racesDataLoadFailed ? (
     <Text>{RACES_LOADING_FAILED_MESSAGE}</Text>
   ) : (
-    <FlatList
-      style={flatList}
-      ItemSeparatorComponent={renderSeparator}
-      data={races}
-      renderItem={renderItem}
-      showsVerticalScrollIndicator={false}
-    />
+    <>
+      <TableHeader
+        firstColumn={'GP Name'}
+        secondColumn={'Date'}
+        thirdColumn={'Finish pos.'}
+        fourthColumn={'More info'}
+      />
+      <FlatList
+        style={flatList}
+        ItemSeparatorComponent={renderSeparator}
+        data={races}
+        renderItem={renderItem}
+        showsVerticalScrollIndicator={false}
+      />
+    </>
   );
 }
 
