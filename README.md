@@ -13,8 +13,7 @@ To run application on emulator, run in console in root project folder:
 
  ```
 yarn  
-react-native  
-run-android
+react-native run-android
 ```
 
 To build apk with specific version name and version code, run in console in root project folder:
@@ -40,6 +39,7 @@ To run application on simulator, run in console in root project folder:
 
 ```
 yarn
+bundle install
 yarn pod
 react-native run-ios
 ```
