@@ -1,10 +1,9 @@
 import { takeLatest } from 'redux-saga/effects';
 import { testSaga } from 'redux-saga-test-plan';
-import { initDataRequest, onLoadDriverInfo } from '../sagaActions';
-import { _initDataRequest, watchInitDataRequest } from './initDataRequest';
+import {onDriverNamePress, onLoadDriverInfo} from '../sagaActions';
 import { DRIVER_INFO_SCREEN } from '../../../rootConstants';
 import { navigateTo } from '../../../App';
-import { _onDriverNamePress } from './onDriverNamePress';
+import { _onDriverNamePress, watchOnDriverNamePress } from './onDriverNamePress';
 
 describe('racersFeature.onDriverNamePress saga', () => {
   it('should do properly actions when driver name pressed', () => {
@@ -19,9 +18,9 @@ describe('racersFeature.onDriverNamePress saga', () => {
   });
 });
 
-describe('racersFeature.initDataRequest saga', () => {
-  it('should fire on initDataRequest action', () => {
-    const generator = watchInitDataRequest();
-    expect(generator.next().value).toEqual(takeLatest(initDataRequest.type, _initDataRequest));
+describe('racersFeature.onDriverNamePress saga', () => {
+  it('should fire on onDriverNamePress action', () => {
+    const generator = watchOnDriverNamePress();
+    expect(generator.next().value).toEqual(takeLatest(onDriverNamePress.type, _onDriverNamePress));
   });
 });
