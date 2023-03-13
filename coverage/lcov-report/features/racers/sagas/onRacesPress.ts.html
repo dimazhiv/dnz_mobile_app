@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/12</span>
+                <span class='fraction'>12/12</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/12</span>
+                <span class='fraction'>12/12</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -103,23 +103,23 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { call, put, select, takeLatest } from 'redux-saga/effects';
 import { onRacesPress } from '../sagaActions';
@@ -127,28 +127,28 @@ import { navigateTo } from '../../../App';
 import { RACES_SCREEN } from '../../../rootConstants';
 import { PayloadAction } from '@reduxjs/toolkit';
 import { loadDriverRacesData } from '../services';
-import {setRacesData, setRacesDataLoadFailed, setShowRacesLoading} from '../slice';
+import { setRacesData, setRacesDataLoadFailed, setShowRacesLoading } from '../slice';
 import { RaceData } from '../../../types/RaceData';
 import { getDriverName } from '../selectors';
 &nbsp;
-export function* <span class="fstat-no" title="function not covered" >_onRacesPress(</span>{ payload }: PayloadAction&lt;string&gt;) {
-<span class="cstat-no" title="statement not covered" >  console.log('----saga racers._onRacesPress saga-----', payload);</span>
-  const driverName: string = <span class="cstat-no" title="statement not covered" >yield select(getDriverName, payload);</span>
-<span class="cstat-no" title="statement not covered" >  yield call(navigateTo, RACES_SCREEN, { title: driverName });</span>
-<span class="cstat-no" title="statement not covered" >  yield put(setShowRacesLoading(true));</span>
-<span class="cstat-no" title="statement not covered" >  try {</span>
-<span class="cstat-no" title="statement not covered" >    yield put(setRacesDataLoadFailed(false));</span>
-    const races: RaceData[] = <span class="cstat-no" title="statement not covered" >yield call(loadDriverRacesData, payload);</span>
-<span class="cstat-no" title="statement not covered" >    yield put(setRacesData(races));</span>
+export function* _onRacesPress({ payload }: PayloadAction&lt;string&gt;) {
+  console.log('----saga racers._onRacesPress saga-----', payload);
+  const driverName: string = yield select(getDriverName, payload);
+  yield call(navigateTo, RACES_SCREEN, { title: driverName });
+  yield put(setShowRacesLoading(true));
+  try {
+    yield put(setRacesDataLoadFailed(false));
+    const races: RaceData[] = yield call(loadDriverRacesData, payload);
+    yield put(setRacesData(races));
   } catch (error) {
-<span class="cstat-no" title="statement not covered" >    yield put(setRacesDataLoadFailed(true));</span>
-<span class="cstat-no" title="statement not covered" >    yield put(setRacesData([]));</span>
+    yield put(setRacesDataLoadFailed(true));
+    yield put(setRacesData([]));
   }
-<span class="cstat-no" title="statement not covered" >  yield put(setShowRacesLoading(false));</span>
+  yield put(setShowRacesLoading(false));
 }
 &nbsp;
-export function* <span class="fstat-no" title="function not covered" >watchOnRacesPress(</span>) {
-<span class="cstat-no" title="statement not covered" >  yield takeLatest(onRacesPress.type, _onRacesPress);</span>
+export function* watchOnRacesPress() {
+  yield takeLatest(onRacesPress.type, _onRacesPress);
 }
 &nbsp;</pre></td></tr></table></pre>
 
@@ -157,7 +157,7 @@ export function* <span class="fstat-no" title="function not covered" >watchOnRac
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-11T16:34:38.536Z
+                at 2023-03-13T13:11:14.682Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/9</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/9</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -87,7 +87,11 @@
 <a name='L22'></a><a href='#L22'>22</a>
 <a name='L23'></a><a href='#L23'>23</a>
 <a name='L24'></a><a href='#L24'>24</a>
-<a name='L25'></a><a href='#L25'>25</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -97,19 +101,23 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { call, put, select, takeEvery } from 'redux-saga/effects';
 import { setDriversData, setMaxOffset } from '../slice';
@@ -120,20 +128,24 @@ import { getMaxOffset } from '../selectors';
 import { DRIVERS_NUMBER_LIMIT } from '../../../rootConstants';
 import { PayloadAction } from '@reduxjs/toolkit';
 &nbsp;
-export function* <span class="fstat-no" title="function not covered" >_onSelectDriversDataForCurrentPage(</span>{ payload }: PayloadAction&lt;number&gt;) {
-<span class="cstat-no" title="statement not covered" >  console.log('----saga racers._onSelectDriversDataForCurrentPage saga-----', payload);</span>
-  const limit = <span class="cstat-no" title="statement not covered" >DRIVERS_NUMBER_LIMIT;</span>
-  const currentOffset = <span class="cstat-no" title="statement not covered" >payload * limit;</span>
-  const maxOffset: number = <span class="cstat-no" title="statement not covered" >yield select(getMaxOffset);</span>
-<span class="cstat-no" title="statement not covered" >  if (currentOffset &gt; maxOffset) {</span>
-<span class="cstat-no" title="statement not covered" >    yield put(setMaxOffset(currentOffset));</span>
-    const driversData = <span class="cstat-no" title="statement not covered" >(yield call(loadDriversData, limit, currentOffset)) as NormalizedLoadedDrivers;</span>
-<span class="cstat-no" title="statement not covered" >    yield put(setDriversData(driversData));</span>
+export function* _onSelectDriversDataForCurrentPage({ payload }: PayloadAction&lt;number&gt;) {
+  console.log('----saga racers._onSelectDriversDataForCurrentPage saga-----', payload);
+  const limit = DRIVERS_NUMBER_LIMIT;
+  const currentOffset = payload * limit;
+  const maxOffset: number = yield select(getMaxOffset);
+  if (currentOffset &gt; maxOffset) {
+    try {
+      yield put(setMaxOffset(currentOffset));
+      const driversData = (yield call(loadDriversData, limit, currentOffset)) as NormalizedLoadedDrivers;
+      yield put(setDriversData(driversData));
+    } catch (error) {
+      yield call(console.error, error);
+    }
   }
 }
 &nbsp;
-export function* <span class="fstat-no" title="function not covered" >watchOnSelectDriversDataForCurrentPage(</span>) {
-<span class="cstat-no" title="statement not covered" >  yield takeEvery(onSelectDriversDataForCurrentPage.type, _onSelectDriversDataForCurrentPage);</span>
+export function* watchOnSelectDriversDataForCurrentPage() {
+  yield takeEvery(onSelectDriversDataForCurrentPage.type, _onSelectDriversDataForCurrentPage);
 }
 &nbsp;</pre></td></tr></table></pre>
 
@@ -142,7 +154,7 @@ export function* <span class="fstat-no" title="function not covered" >watchOnSel
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-11T16:34:38.536Z
+                at 2023-03-13T13:11:14.682Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

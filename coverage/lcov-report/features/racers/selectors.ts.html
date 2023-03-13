@@ -106,65 +106,65 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { NAME } from './constants';
-import { RootState } from '../../setupStore';
+import { RootStateType } from '../../setupStore';
 import { ById, DriversIds } from '../../types/NormalizedLoadedDrivers';
 import { DriverData } from '../../types/DriverData';
 import { DRIVERS_NUMBER_LIMIT, FIRST_START_PAGE } from '../../rootConstants';
 import { RaceData } from '../../types/RaceData';
 import { DriverId } from '../../types/Types';
 &nbsp;
-export const showRacesLoading = <span class="fstat-no" title="function not covered" >(s</span>tate: RootState): boolean =&gt; <span class="cstat-no" title="statement not covered" >state[NAME].showRacesLoading;</span>
-export const isRacesDataLoadFailed = <span class="fstat-no" title="function not covered" >(s</span>tate: RootState): boolean =&gt; <span class="cstat-no" title="statement not covered" >state[NAME].racesDataLoadFailed;</span>
-export const getRaces = <span class="fstat-no" title="function not covered" >(s</span>tate: RootState): RaceData[] =&gt; <span class="cstat-no" title="statement not covered" >state[NAME].races;</span>
-export const getDriversIds = <span class="fstat-no" title="function not covered" >(s</span>tate: RootState): DriversIds =&gt; <span class="cstat-no" title="statement not covered" >state[NAME].driversIds;</span>
-export const getDrivers = <span class="fstat-no" title="function not covered" >(s</span>tate: RootState): ById&lt;DriverData&gt; =&gt; <span class="cstat-no" title="statement not covered" >state[NAME].byId;</span>
-export const getActiveDriverInfo = <span class="fstat-no" title="function not covered" >(s</span>tate: RootState): DriverData | {} =&gt; <span class="cstat-no" title="statement not covered" >state[NAME].activeDriverInfo;</span>
-export const getCurrentPage = <span class="fstat-no" title="function not covered" >(s</span>tate: RootState): number =&gt; <span class="cstat-no" title="statement not covered" >state[NAME].currentPageNumber;</span>
-export const getMaxOffset = <span class="fstat-no" title="function not covered" >(s</span>tate: RootState) =&gt; <span class="cstat-no" title="statement not covered" >state[NAME].maxOffset;</span>
-export const getDriverName = <span class="fstat-no" title="function not covered" >(s</span>tate: RootState, driverId: DriverId) =&gt; {
+export const showRacesLoading = <span class="fstat-no" title="function not covered" >(s</span>tate: RootStateType): boolean =&gt; <span class="cstat-no" title="statement not covered" >state[NAME].showRacesLoading;</span>
+export const isRacesDataLoadFailed = <span class="fstat-no" title="function not covered" >(s</span>tate: RootStateType): boolean =&gt; <span class="cstat-no" title="statement not covered" >state[NAME].racesDataLoadFailed;</span>
+export const getRaces = <span class="fstat-no" title="function not covered" >(s</span>tate: RootStateType): RaceData[] =&gt; <span class="cstat-no" title="statement not covered" >state[NAME].races;</span>
+export const getDriversIds = <span class="fstat-no" title="function not covered" >(s</span>tate: RootStateType): DriversIds =&gt; <span class="cstat-no" title="statement not covered" >state[NAME].driversIds;</span>
+export const getDrivers = <span class="fstat-no" title="function not covered" >(s</span>tate: RootStateType): ById&lt;DriverData&gt; =&gt; <span class="cstat-no" title="statement not covered" >state[NAME].byId;</span>
+export const getActiveDriverInfo = <span class="fstat-no" title="function not covered" >(s</span>tate: RootStateType): DriverData | {} =&gt; <span class="cstat-no" title="statement not covered" >state[NAME].activeDriverInfo;</span>
+export const getCurrentPage = <span class="fstat-no" title="function not covered" >(s</span>tate: RootStateType): number =&gt; <span class="cstat-no" title="statement not covered" >state[NAME].currentPageNumber;</span>
+export const getMaxOffset = <span class="fstat-no" title="function not covered" >(s</span>tate: RootStateType) =&gt; <span class="cstat-no" title="statement not covered" >state[NAME].maxOffset;</span>
+export const getDriverName = <span class="fstat-no" title="function not covered" >(s</span>tate: RootStateType, driverId: DriverId) =&gt; {
   const drivers = <span class="cstat-no" title="statement not covered" >getDrivers(state);</span>
   const { givenName, familyName } = <span class="cstat-no" title="statement not covered" >drivers[driverId];</span>
 <span class="cstat-no" title="statement not covered" >  return `${givenName} ${familyName}`;</span>
 };
 &nbsp;
-export const showPrevButton = <span class="fstat-no" title="function not covered" >(s</span>tate: RootState): boolean =&gt; <span class="cstat-no" title="statement not covered" >getCurrentPage(state) !== FIRST_START_PAGE;</span>
+export const showPrevButton = <span class="fstat-no" title="function not covered" >(s</span>tate: RootStateType): boolean =&gt; <span class="cstat-no" title="statement not covered" >getCurrentPage(state) !== FIRST_START_PAGE;</span>
 &nbsp;
-export const getCurrentPageDriverIds = <span class="fstat-no" title="function not covered" >(s</span>tate: RootState): DriversIds =&gt; {
+export const getCurrentPageDriverIds = <span class="fstat-no" title="function not covered" >(s</span>tate: RootStateType): DriversIds =&gt; {
   const currentPage = <span class="cstat-no" title="statement not covered" >getCurrentPage(state);</span>
   const driversIds = <span class="cstat-no" title="statement not covered" >getDriversIds(state);</span>
   const currentOffset = <span class="cstat-no" title="statement not covered" >currentPage * DRIVERS_NUMBER_LIMIT;</span>
 <span class="cstat-no" title="statement not covered" >  return driversIds.length ? driversIds.slice(currentOffset - DRIVERS_NUMBER_LIMIT, currentOffset) : [];</span>
 };
 &nbsp;
-export const getDriver = <span class="fstat-no" title="function not covered" >(s</span>tate: RootState, driverId: string): DriverData =&gt; {
+export const getDriver = <span class="fstat-no" title="function not covered" >(s</span>tate: RootStateType, driverId: string): DriverData =&gt; {
   const drivers = <span class="cstat-no" title="statement not covered" >getDrivers(state);</span>
 <span class="cstat-no" title="statement not covered" >  return drivers[driverId];</span>
 };
@@ -175,7 +175,7 @@ export const getDriver = <span class="fstat-no" title="function not covered" >(s
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-11T16:34:38.536Z
+                at 2023-03-13T13:11:14.682Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

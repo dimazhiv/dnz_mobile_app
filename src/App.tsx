@@ -5,11 +5,8 @@ import { createNavigationContainerRef, NavigationContainer } from '@react-naviga
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import DriversTable from './screens/DriversTable/DriversTableContainer';
 import DriverInfo from './screens/DriverInfo';
-import { DRIVER_INFO_SCREEN, DRIVERS_TABLE_SCREEN, GALLERY_SCREEN, PHOTO_SCREEN, RACES_SCREEN } from './rootConstants';
+import { DRIVER_INFO_SCREEN, DRIVERS_TABLE_SCREEN, RACES_SCREEN } from './rootConstants';
 import RacesTable from './screens/RacesTable/RacesTableContainer';
-import Gallery from './screens/Gallery/Gallery';
-import Photo from './screens/Photo/Photo';
-import { onLoadPhotosList } from './features/gallery/sagaActions';
 import { PersistGate } from 'redux-persist/integration/react';
 import { initDataRequest } from './features/racers/sagaActions';
 
@@ -19,8 +16,6 @@ type Screens = {
   'Drivers Table': {};
   'Driver Info': {};
   'Races Table': {};
-  Gallery: {};
-  Photo: {};
 };
 const { Navigator, Screen } = createNativeStackNavigator();
 export const navigationRef = createNavigationContainerRef<Screens>();
@@ -36,19 +31,16 @@ function AppNavigation() {
 
   useEffect(() => {
     dispatch(initDataRequest());
-    dispatch(onLoadPhotosList());
   }, []);
 
   return (
     <NavigationContainer ref={navigationRef}>
       <Navigator
-        initialRouteName={GALLERY_SCREEN}
+        initialRouteName={DRIVERS_TABLE_SCREEN}
         screenOptions={{
           headerBackTitleVisible: false,
           gestureEnabled: false
         }}>
-        <Screen name={GALLERY_SCREEN} component={Gallery} />
-        <Screen name={PHOTO_SCREEN} component={Photo} />
         <Screen name={DRIVERS_TABLE_SCREEN} component={DriversTable} />
         <Screen name={DRIVER_INFO_SCREEN} component={DriverInfo} />
         <Screen
