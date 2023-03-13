@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { SafeAreaView, StatusBar, StyleSheet } from 'react-native';
 import DriversList from '../../features/racers/components/DriversList/DriversListContainer';
 import NavigationButton from '../../features/racers/components/NavigationButton/NavigationButton';
+import TableHeader from '../../features/racers/components/TableHeader/TableHeader';
 
 type Props = {
   navigation: any;
@@ -21,6 +22,7 @@ function DriversTable({ showPrevButton, navigation, onNextPagePress, onPrevPageP
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar />
+      <TableHeader firstColumn={'Name'} secondColumn={'Birthday'} thirdColumn={'Nationality'} fourthColumn={'Races'} />
       <DriversList />
     </SafeAreaView>
   );
