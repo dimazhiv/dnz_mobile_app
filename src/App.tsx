@@ -10,8 +10,10 @@ import RacesTable from './screens/RacesTable/RacesTableContainer';
 import Gallery from './screens/Gallery/Gallery';
 import Photo from './screens/Photo/Photo';
 import { onLoadPhotosList } from './features/gallery/sagaActions';
+import { PersistGate } from 'redux-persist/integration/react';
+import { initDataRequest } from './features/racers/sagaActions';
 
-const { store } = setupStore();
+const { persistor, store } = setupStore();
 
 type Screens = {
   'Drivers Table': {};
@@ -33,6 +35,7 @@ function AppNavigation() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(initDataRequest());
     dispatch(onLoadPhotosList());
   }, []);
 
@@ -62,9 +65,9 @@ function AppNavigation() {
 function AppProvider() {
   return (
     <Provider store={store}>
-      {/*<PersistGate persistor={persistor} loading={null}>*/}
-      <AppNavigation />
-      {/*</PersistGate>*/}
+      <PersistGate persistor={persistor} loading={null}>
+        <AppNavigation />
+      </PersistGate>
     </Provider>
   );
 }

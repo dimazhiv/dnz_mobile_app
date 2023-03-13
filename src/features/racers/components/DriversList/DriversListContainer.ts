@@ -2,9 +2,9 @@ import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { getCurrentPageDriverIds } from '../../selectors';
 import DriversList from './DriversList';
-import { RootState } from '../../../../setupStore';
+import { RootStateType } from '../../../../setupStore';
 
-function mapStateToProps(state: RootState) {
+function mapStateToProps(state: RootStateType) {
   return {
     driversIds: getCurrentPageDriverIds(state)
   };

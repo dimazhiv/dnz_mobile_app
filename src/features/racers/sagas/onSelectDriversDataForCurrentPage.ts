@@ -13,9 +13,13 @@ export function* _onSelectDriversDataForCurrentPage({ payload }: PayloadAction<n
   const currentOffset = payload * limit;
   const maxOffset: number = yield select(getMaxOffset);
   if (currentOffset > maxOffset) {
-    yield put(setMaxOffset(currentOffset));
-    const driversData = (yield call(loadDriversData, limit, currentOffset)) as NormalizedLoadedDrivers;
-    yield put(setDriversData(driversData));
+    try {
+      yield put(setMaxOffset(currentOffset));
+      const driversData = (yield call(loadDriversData, limit, currentOffset)) as NormalizedLoadedDrivers;
+      yield put(setDriversData(driversData));
+    } catch (error) {
+      yield call(console.error, error);
+    }
   }
 }
 

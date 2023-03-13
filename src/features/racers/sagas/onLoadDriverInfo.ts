@@ -3,7 +3,7 @@ import { setActiveDriverInfo } from '../slice';
 import { onLoadDriverInfo } from '../sagaActions';
 import { loadDriverInfoData } from '../services';
 import { DriverData } from '../../../types/DriverData';
-import {PayloadAction} from "@reduxjs/toolkit";
+import { PayloadAction } from '@reduxjs/toolkit';
 
 export function* _onLoadDriverInfo({ payload }: PayloadAction<string>) {
   console.log('----saga racers._onLoadDriverInfo saga-----', payload);
@@ -11,7 +11,7 @@ export function* _onLoadDriverInfo({ payload }: PayloadAction<string>) {
     const driverInfo: DriverData = yield call(loadDriverInfoData as any, payload);
     yield put(setActiveDriverInfo(driverInfo));
   } catch (error) {
-    console.error(error);
+    yield call(console.error, error);
   }
 }
 

@@ -2,9 +2,9 @@ import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { getRaces, isRacesDataLoadFailed, showRacesLoading } from '../../selectors';
 import RacesList from './RacesList';
-import { RootState } from '../../../../setupStore';
+import { RootStateType } from '../../../../setupStore';
 
-function mapStateToProps(state: RootState) {
+function mapStateToProps(state: RootStateType) {
   return {
     races: getRaces(state),
     showRacesLoading: showRacesLoading(state),
