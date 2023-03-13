@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import { Button, SafeAreaView, StatusBar, StyleSheet } from 'react-native';
+import { SafeAreaView, StatusBar, StyleSheet } from 'react-native';
 import DriversList from '../../features/racers/components/DriversList/DriversListContainer';
+import NavigationButton from '../../features/racers/components/NavigationButton/NavigationButton';
 
 type Props = {
   navigation: any;
@@ -12,8 +13,8 @@ type Props = {
 function DriversTable({ showPrevButton, navigation, onNextPagePress, onPrevPagePress }: Props) {
   useEffect(() => {
     navigation.setOptions({
-      headerLeft: () => showPrevButton && <Button onPress={onPrevPagePress} title={'<'} />,
-      headerRight: () => <Button onPress={onNextPagePress} title={'>'} />
+      headerLeft: () => showPrevButton && <NavigationButton onPress={onPrevPagePress} title={'<'} />,
+      headerRight: () => <NavigationButton onPress={onNextPagePress} title={'>'} />
     });
   }, [showPrevButton]);
 

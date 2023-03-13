@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
-import { Button, SafeAreaView, StatusBar, StyleSheet } from 'react-native';
+import { SafeAreaView, StatusBar, StyleSheet } from 'react-native';
 import RacesList from '../../features/racers/components/RacesList/RacesListContainer';
 import { useDispatch } from 'react-redux';
 import { ActionCreatorWithoutPayload } from '@reduxjs/toolkit';
+import NavigationButton
+  from "../../features/racers/components/NavigationButton/NavigationButton";
 
 type RacesTableProps = {
   navigation: any;
@@ -12,7 +14,7 @@ type RacesTableProps = {
 function RacesTable({ navigation, onClearRacesData }: RacesTableProps) {
   useEffect(() => {
     navigation.setOptions({
-      headerLeft: () => <Button onPress={handleOnPrevPagePress} title={'<'} />
+      headerLeft: () => <NavigationButton onPress={handleOnPrevPagePress} title={'<'} />
     });
   }, []);
   const dispatch = useDispatch();

@@ -39,7 +39,8 @@ function AppNavigation() {
         initialRouteName={DRIVERS_TABLE_SCREEN}
         screenOptions={{
           headerBackTitleVisible: false,
-          gestureEnabled: false
+          gestureEnabled: false,
+          headerTitleAlign: 'center'
         }}>
         <Screen name={DRIVERS_TABLE_SCREEN} component={DriversTable} />
         <Screen name={DRIVER_INFO_SCREEN} component={DriverInfo} />
