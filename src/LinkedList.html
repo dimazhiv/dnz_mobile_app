@@ -1,0 +1,14 @@
+const list = [];
+
+function toArray(LinkedList) {
+  let currentListItem = LinkedList.head;
+  while (currentListItem) {
+    list.push(currentListItem);
+    currentListItem = currentListItem.next();
+  }
+}
+
+function hasCycle(list) {
+  const setFromLinkedListArray = new Set(list);
+ return setFromLinkedListArray.size !== list.length;
+}

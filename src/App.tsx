@@ -1,17 +1,23 @@
-import React, { useEffect } from 'react';
-import { Provider, useDispatch } from 'react-redux';
+import React from 'react';
+import { Provider } from 'react-redux';
 import setupStore from './setupStore';
 import { createNavigationContainerRef, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import DriversTable from './screens/DriversTable/DriversTableContainer';
 import DriverInfo from './screens/DriverInfo';
-import { DRIVER_INFO_SCREEN, DRIVERS_TABLE_SCREEN, GALLERY_SCREEN, PHOTO_SCREEN, RACES_SCREEN } from './rootConstants';
+import {
+  DRIVER_INFO_SCREEN,
+  DRIVERS_TABLE_SCREEN,
+  GALLERY_SCREEN,
+  HOME,
+  PHOTO_SCREEN,
+  RACES_SCREEN
+} from './rootConstants';
 import RacesTable from './screens/RacesTable/RacesTableContainer';
 import Gallery from './screens/Gallery/Gallery';
 import Photo from './screens/Photo/Photo';
-import { onLoadPhotosList } from './features/gallery/sagaActions';
 import { PersistGate } from 'redux-persist/integration/react';
-import { initDataRequest } from './features/racers/sagaActions';
+import Home from './screens/Home/Home';
 
 const { persistor, store } = setupStore();
 
@@ -32,22 +38,16 @@ export function navigateTo(name: keyof Screens, params: any) {
 }
 
 function AppNavigation() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(initDataRequest());
-    dispatch(onLoadPhotosList());
-  }, []);
-
   return (
     <NavigationContainer ref={navigationRef}>
       <Navigator
-        initialRouteName={GALLERY_SCREEN}
+        initialRouteName={HOME}
         screenOptions={{
           headerBackTitleVisible: false,
           gestureEnabled: false,
           headerTitleAlign: 'center'
         }}>
+        <Screen name={HOME} component={Home} />
         <Screen name={GALLERY_SCREEN} component={Gallery} />
         <Screen name={PHOTO_SCREEN} component={Photo} />
         <Screen name={DRIVERS_TABLE_SCREEN} component={DriversTable} />

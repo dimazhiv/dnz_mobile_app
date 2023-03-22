@@ -16,7 +16,7 @@ function DriversList({ driversIds }: DriversListProps) {
   return (
     <>
       <TableHeader firstColumn={'Name'} secondColumn={'Birthday'} thirdColumn={'Nationality'} fourthColumn={'Races'} />
-      <FlatList
+        <FlatList
         style={styles.flatList}
         ItemSeparatorComponent={renderSeparator}
         data={driversIds}

@@ -1,4 +1,3 @@
-import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import DriversTable from './DriversTable';
 import { showPrevButton } from '../../features/racers/selectors';
@@ -11,14 +10,9 @@ function mapStateToProps(state: RootStateType) {
   };
 }
 
-function mapDispatchToProps(dispatch: Dispatch) {
-  return bindActionCreators(
-    {
-      onPrevPagePress: onPrevPagePress,
-      onNextPagePress: onNextPagePress
-    },
-    dispatch
-  );
-}
+const mapDispatchToProps = {
+  onPrevPagePress,
+  onNextPagePress
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(DriversTable);

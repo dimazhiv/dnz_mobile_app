@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot testing DriverInfo component correct component view 1`] = `
+<TouchableOpacity
+  onPress={[Function]}
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "red",
+      "borderColor": "blue",
+      "borderRadius": 10,
+      "borderWidth": 1,
+      "height": 50,
+      "justifyContent": "center",
+      "width": 150,
+    }
+  }
+>
+  <Text
+    style={
+      {
+        "color": "white",
+        "fontSize": 20,
+      }
+    }
+  >
+    Gallery
+  </Text>
+</TouchableOpacity>
+`;
