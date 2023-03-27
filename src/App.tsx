@@ -55,7 +55,7 @@ function AppNavigation() {
         <Screen
           name={RACES_SCREEN}
           component={RacesTable}
-          //TODO DZ fix type issue till 15.03.2023
+          //TODO DZ fix type issue till 30.03.2023
           options={({ route }) => ({ title: route.params?.title })}
         />
       </Navigator>

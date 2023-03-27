@@ -1,6 +1,6 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { navigateTo } from '../../../App';
-import {DRIVERS_TABLE_SCREEN, GALLERY_SCREEN} from '../../../rootConstants';
+import { GALLERY_SCREEN} from '../../../rootConstants';
 import { PayloadAction } from '@reduxjs/toolkit';
 import { onGalleryButtonPress } from '../sagaActions';
 import { onLoadPhotosList } from '../../gallery/sagaActions';

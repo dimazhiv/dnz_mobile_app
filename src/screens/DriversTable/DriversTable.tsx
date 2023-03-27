@@ -11,9 +11,16 @@ type Props = {
 };
 
 function DriversTable({ showPrevButton, navigation, onNextPagePress, onPrevPagePress }: Props) {
+  const goBack = () => navigation.goBack();
+
   useEffect(() => {
     navigation.setOptions({
-      headerLeft: () => showPrevButton && <NavigationButton onPress={onPrevPagePress} title={'<'} />,
+      headerLeft: () =>
+        showPrevButton ? (
+          <NavigationButton onPress={onPrevPagePress} title={'<'} />
+        ) : (
+          <NavigationButton onPress={goBack} title={'X'} />
+        ),
       headerRight: () => <NavigationButton onPress={onNextPagePress} title={'>'} />
     });
   }, [showPrevButton]);
