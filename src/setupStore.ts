@@ -8,6 +8,7 @@ import { constants as racersConstants } from './features/racers';
 import { onNextPagePress, onPrevPagePress } from './features/racers/sagaActions';
 import { onLoadPhotosList } from './features/gallery/sagaActions';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {onGalleryButtonPress, onRacersButtonPress} from "./features/app/sagaActions";
 
 const racersPersistConfig = {
   key: racersConstants.NAME,
@@ -37,7 +38,9 @@ export default function setupStore(initialState = {}) {
             REGISTER,
             onPrevPagePress.type,
             onNextPagePress.type,
-            onLoadPhotosList.type
+            onLoadPhotosList.type,
+            onGalleryButtonPress.type,
+            onRacersButtonPress.type
           ]
         }
       }).concat(sagaMiddleware)
