@@ -30,7 +30,7 @@ Example:
 ```
 If you run build command without specific version name and version code, it will build with default params: versionName=1.0 versionCode=1
 
-Apk file will appear in folder dnz_gallery_mobile_app/android/app/build/outputs/apk/releases/
+Apk file will appear in folder dnz_mobile_app/android/app/build/outputs/apk/releases/
 
 ## Ios:
 
