@@ -6,7 +6,7 @@ import { setCurrentPhotoUri } from '../slice';
 import { PayloadAction } from '@reduxjs/toolkit';
 
 export function* _onPhotoPress({ payload }: PayloadAction<string>) {
-  console.log('----saga racers._onPhotoPress saga-----');
+  console.log('----saga galleryFeature._onPhotoPress saga-----');
   yield put(setCurrentPhotoUri(payload));
   yield call(navigateTo, PHOTO_SCREEN, null);
 }

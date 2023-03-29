@@ -7,7 +7,7 @@ import { DriversIds, NormalizedLoadedDrivers } from '../../../types/NormalizedLo
 import { setDriversData, setMaxOffset } from '../slice';
 
 export function* _initDataRequest() {
-  console.log('----saga racers._initDataRequest saga-----');
+  console.log('----saga racersFeature._initDataRequest saga-----');
   const driversIds = (yield select(getDriversIds)) as DriversIds;
   if (driversIds.length === 0) {
     try {

@@ -9,7 +9,7 @@ import { RaceData } from '../../../types/RaceData';
 import { getDriverName } from '../selectors';
 
 export function* _onRacesPress({ payload }: PayloadAction<string>) {
-  console.log('----saga racers._onRacesPress saga-----', payload);
+  console.log('----saga racersFeature._onRacesPress saga-----', payload);
   const driverName: string = yield select(getDriverName, payload);
   yield call(navigateTo, RACES_SCREEN, { title: driverName });
   yield put(setShowRacesLoading(true));

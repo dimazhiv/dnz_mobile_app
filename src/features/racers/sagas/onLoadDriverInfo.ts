@@ -6,7 +6,7 @@ import { DriverData } from '../../../types/DriverData';
 import { PayloadAction } from '@reduxjs/toolkit';
 
 export function* _onLoadDriverInfo({ payload }: PayloadAction<string>) {
-  console.log('----saga racers._onLoadDriverInfo saga-----', payload);
+  console.log('----saga racersFeature._onLoadDriverInfo saga-----', payload);
   try {
     const driverInfo: DriverData = yield call(loadDriverInfoData as any, payload);
     yield put(setActiveDriverInfo(driverInfo));

@@ -8,7 +8,7 @@ import { DRIVERS_NUMBER_LIMIT } from '../../../rootConstants';
 import { PayloadAction } from '@reduxjs/toolkit';
 
 export function* _onSelectDriversDataForCurrentPage({ payload }: PayloadAction<number>) {
-  console.log('----saga racers._onSelectDriversDataForCurrentPage saga-----', payload);
+  console.log('----saga racersFeature._onSelectDriversDataForCurrentPage saga-----', payload);
   const limit = DRIVERS_NUMBER_LIMIT;
   const currentOffset = payload * limit;
   const maxOffset: number = yield select(getMaxOffset);

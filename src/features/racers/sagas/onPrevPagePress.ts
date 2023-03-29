@@ -4,7 +4,7 @@ import { onPrevPagePress, onSelectDriversDataForCurrentPage } from '../sagaActio
 import { getCurrentPage } from '../selectors';
 
 export function* _onPrevPagePress() {
-  console.log('----saga racers._onPrevPagePress saga-----');
+  console.log('----saga racersFeature._onPrevPagePress saga-----');
   const currentPageNumber: number = yield select(getCurrentPage);
   const nextPage: number = yield put(setCurrentPage(currentPageNumber - 1));
   yield put(onSelectDriversDataForCurrentPage(nextPage));
