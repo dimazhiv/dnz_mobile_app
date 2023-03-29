@@ -1,7 +1,7 @@
 # dnz_mobile_app
-Demo mobile application for 2 feature:
+Demo mobile application for 2 features:
  - F1 drivers table from: https://ergast.com/mrd/
- - photo gallery from flickr.com
+ - photo gallery from https://flickr.com
 
 Manual is valid for MacOS. For another OS commands can be different.
 
