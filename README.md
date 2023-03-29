@@ -6,6 +6,7 @@ Demo mobile application for 2 features:
 Manual is valid for MacOS. For another OS commands can be different.
 
 ## Android:
+You can try to install already builded apk file from /apk_exapmle dir for your emulator or device. OR rebuild by following next steps:
 
 To run android app you should have prepared environment with Android studio, JDK, emulators, etc.
 according to React-Native guides:  
