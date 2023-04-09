@@ -7,6 +7,8 @@ import { RACES_NUMBER_MAX } from '../../rootConstants';
 async function fetchDriversData(limit: number, offset: number): Promise<DriverData[]> {
   try {
     const response = await axios.get(`https://ergast.com/api/f1/drivers.json?limit=${limit}&offset=${offset}`);
+   console.log('!!!!!!!!CONSOLE!!!!!!!!: ',response );
+
     return response.data.MRData.DriverTable.Drivers;
   } catch (error) {
     throw error;
