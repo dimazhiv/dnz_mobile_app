@@ -4854,8 +4854,8 @@ __metadata:
     react: 18.3.1
     react-dom: ^18.2.0
     react-native: 0.76.2
-    react-native-safe-area-context: ^4.5.0
-    react-native-screens: ^3.20.0
+    react-native-safe-area-context: 4.14.0
+    react-native-screens: 4.1
     react-redux: ^8.0.5
     react-test-renderer: 18.3.1
     redux: ^4.2.1
@@ -9006,26 +9006,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-safe-area-context@npm:^4.5.0":
-  version: 4.5.0
-  resolution: "react-native-safe-area-context@npm:4.5.0"
+"react-native-safe-area-context@npm:4.14.0":
+  version: 4.14.0
+  resolution: "react-native-safe-area-context@npm:4.14.0"
   peerDependencies:
     react: "*"
     react-native: "*"
-  checksum: 958df1d20492aa89c23d746f88409a3a3bd1b0d397c80310a4b0bbec9888cbbeb7579c9c92dad46841e2e6536491806206228ba009b7c8af970670aef8273a30
+  checksum: 394523434f3c447ff7ace6fddb00fb976b14a1e7bed378eb8ea684a73153962ebcdb51445d9c2052d0d4211f5a69354aafc05875989b7e79bf1c5b592e490438
   languageName: node
   linkType: hard
 
-"react-native-screens@npm:^3.20.0":
-  version: 3.20.0
-  resolution: "react-native-screens@npm:3.20.0"
+"react-native-screens@npm:4.1":
+  version: 4.1.0
+  resolution: "react-native-screens@npm:4.1.0"
   dependencies:
     react-freeze: ^1.0.0
     warn-once: ^0.1.0
   peerDependencies:
     react: "*"
     react-native: "*"
-  checksum: 94ab21378ee82765d329ccb8c92f5ca7cb15df916496fac7ce9a03c45e22579715000dae9c16f0a7d734a8fc1c2d0569fd82ecb71119a0b56046b5ea7533e7c2
+  checksum: 70a1c522b000758ca066b30062b7902c3df15ee5d1bccc4e59901d207e278cb6852f7c883a5df5c93f1415fd4089de2d4261e3f3a7cd5150c1aad8674193c728
   languageName: node
   linkType: hard
 
