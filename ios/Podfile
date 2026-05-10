@@ -23,11 +23,6 @@ target 'dnz_mobile_app' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-  target 'dnz_mobile_appTests' do
-    inherit! :complete
-    # Pods for testing
-  end
-
   post_install do |installer|
   # Path to the Yoga headers in Private
     private_yoga_headers = "#{installer.sandbox.root}/Headers/Private/Yoga"
@@ -43,7 +38,6 @@ target 'dnz_mobile_app' do
       new_contents = text.gsub('#define FOLLY_HAS_COROUTINES 1', '#define FOLLY_HAS_COROUTINES 0')
       File.open(file, "w") { |file| file.puts new_contents }
     end
-   # https://github.com/facebook/react-native/blob/main/packages/react-native/scripts/react_native_pods.rb#L197-L202
     react_native_post_install(
       installer,
        config[:reactNativePath],
